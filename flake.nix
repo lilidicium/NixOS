@@ -21,6 +21,7 @@
 		nixosConfigurations = {
 			nixos = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
+				specialArgs = {inherit inputs;};
 				modules = [
 					# Import configuration.nix
 					./configuration.nix
@@ -39,7 +40,7 @@
 					 		catppuccin.homeModules.catppuccin
 					 	];
 					 home-manager.extraSpecialArgs = {
-					 	inherit zen-browser;
+					 	inherit inputs;
 					 	};
 					 };
 					 # optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
