@@ -1,4 +1,4 @@
-{ config, pkgs, system, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 #{config, pkgs, ... }:
 
 {
@@ -30,7 +30,7 @@
 
 		vesktop
 
-#		inputs.zen-browser.packages.${pkgs.system}.twilight
+		inputs.zen-browser.packages.${pkgs.system}.twilight
 
 		nerd-fonts.fantasque-sans-mono
 	

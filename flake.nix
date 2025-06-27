@@ -20,6 +20,7 @@
 	outputs = inputs@{ nixpkgs, catppuccin, home-manager, zen-browser, ... }: {
 		nixosConfigurations = {
 			nixos = nixpkgs.lib.nixosSystem {
+				system = "x86_64-linux";
 				specialArgs = {inherit inputs;};
 				modules = [
 					# Import configuration.nix
@@ -40,7 +41,6 @@
 					 };
 					 home-manager.extraSpecialArgs = {
 					 	inherit inputs;
-					 	system = "x86_64-linux";
 				   	 };
 					 # optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
 					}
