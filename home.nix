@@ -30,7 +30,9 @@
 
 		vesktop
 
-		inputs.zen-browser.packages.${system}.twilight
+#		inputs.zen-browser.packages.${pkgs.system}.twilight
+
+		nerd-fonts.fantasque-sans-mono
 	
 	];
 
