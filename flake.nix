@@ -28,21 +28,21 @@
 					# make home-manager a module of nixos
 					# so that home-manager will be deployed
 					# automatically when executing `nixos-rebuild switch`
-					#inputs.zen-browser.packages."{$system}".twilight
+					inputs.zen-browser.packages."x86_64-linux".twilight
 					catppuccin.nixosModules.catppuccin	
-					home-manager.nixosModules.home-manager
-					{
-					 home-manager.useGlobalPkgs = true;
-					 home-manager.useUserPackages = true;
-					 home-manager.users.maggie = {
-					 	imports = [
-					 		./home.nix
-					 		catppuccin.homeModules.catppuccin
-					 	];
+					home-manager.nixosModules.home-manager {
+						home-manager.useGlobalPkgs = true;
+					 	home-manager.useUserPackages = true;
+					 	home-manager.users.maggie = {
+					 		imports = [
+					 			./home.nix
+					 			catppuccin.homeModules.catppuccin
+					 		];
+					 };
 					 home-manager.extraSpecialArgs = {
 					 	inherit inputs;
-					 	};
-					 };
+					 	system = "x86_64-linux";
+				   	 };
 					 # optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
 					}
 				];

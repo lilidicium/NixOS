@@ -1,4 +1,4 @@
-{ config, pkgs, system,  inputs, ... }:
+{ config, pkgs, system, inputs, ... }:
 #{config, pkgs, ... }:
 
 {
@@ -30,7 +30,7 @@
 
 		vesktop
 
-	#	inputs.zen-browser.packages."${system}".twilight
+		inputs.zen-browser.packages."x86_64-linux".twilight
 	
 	];
 
@@ -81,7 +81,8 @@
 		shellAliases = {
 			pls = "sudo";
 			please = "sudo $(history -p !!)";
-			rebuild = "sudo nixos-rebuild switch";
+			rebuild = "git stage . && sudo nixos-rebuild switch";
+			test = "git stage . && sudo nixos-rebuild test";
 		};
 	};
 
