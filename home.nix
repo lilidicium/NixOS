@@ -13,6 +13,7 @@
 	imports = [
 		./desktop/default.nix
 		inputs.sherlock.homeModules.default
+		inputs.zen-browser.packages.${pkgs.system}.twilight
 	];
 	
 	home.packages = with pkgs; [
@@ -28,7 +29,6 @@
 		nh
 
 		vesktop
-		inputs.zen-browser.packages.${pkgs.system}.twilight
 
 		hyprcursor
 
@@ -100,11 +100,10 @@
 			style = null;
 		};
 	};
-
-#	programs.zen = {
-#		enable = true;
-#		package = "zen-browser";
-#	};
+	
+	programs.zen-browser = {
+		enable = true;
+	};
 	
 	programs.bash = {
 		enable = true;
