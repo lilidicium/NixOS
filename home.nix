@@ -21,16 +21,14 @@
 		man
 		tldr
 		tree
-
 		statix
-
 		glow # terminal markdown viewer
-
 		btop
 
 		vesktop
-
 		inputs.zen-browser.packages.${pkgs.system}.twilight
+
+		sherlock-launcher
 
 		nerd-fonts.fantasque-sans-mono
 	
