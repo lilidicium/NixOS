@@ -19,11 +19,24 @@ in {
 			enableXdgAutostart = true;
 			variables = ["--all"];
 		};
-		xwayland = { enable = true; };
+		
+		xwayland = { 
+			enable = true; 
+		};
 		
 		settings = {
+
+#			env = [
+#				"HYPRCURSOR_THEME,rose-pine-hyprcursor"
+#				"HYPRCURSOR_SIZE, 24"
+#				"XCURSOR_THEME,rose-pine-cursor"
+#				"XCURSOR_SIZE, 24"
+#				"MOZ_ENABLE_WAYLAND,1"
+#			];
+			
 			exec-once = [
-				"killall -q swww; sleep .5 && swww-daemon"
+				"swww-daemon"
+				"hyprctl setcursor rose-pine-hyprcursor 24"
 				#"killall -q waybar; sleep .5 && waybar"
 				#"killall -q swaync;sleep .5 && swaync"
 			];
@@ -36,6 +49,7 @@ in {
 
 				# Summon
 				"SUPER, T, exec, alacritty"
+				"SUPER, B, exec, zen"
 				
 				# Window
 				"SUPER, Q, killactive"
@@ -111,7 +125,7 @@ in {
 				workspace_swipe_min_speed_to_force = 30;
 				workspace_swipe_cancel_ratio = 0.5;
 				workspace_swipe_create_new = 1;
-				workspace_swipe_forever = 1;
+				workspace_swipe_forever = 0;
 			};
 
 			device = {
@@ -165,6 +179,10 @@ in {
 				};
 			};
 
+			xwayland = {
+				force_zero_scaling = true;
+			};
+
 			ecosystem = {
 				no_donation_nag = true;
 				no_update_news = false;
@@ -173,7 +191,7 @@ in {
 			cursor = {
 				sync_gsettings_theme = true;
 				no_hardware_cursors = 2; # 1 for off
-				enable_hyprcursor = false;
+				enable_hyprcursor = true;
 				warp_on_change_workspace = 2;
 				no_warps = true;
 			};

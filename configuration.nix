@@ -52,7 +52,10 @@
     layout = "us";
     variant = "";
   };
+  #environment.variables.XCURSOR_SIZE2 = "32";
 
+  environment.variables.MOZ_ENABLE_WAYLAND = 1;
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.maggie = {
     isNormalUser = true;

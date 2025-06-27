@@ -7,7 +7,7 @@
 
 	xresources.properties = {
 		"Xcursor.size" = 24;
-		"Xft.dpi" = 166;
+		"Xft.dpi" = 172;
 	};
 	
 	imports = [
@@ -30,9 +30,22 @@
 		vesktop
 		inputs.zen-browser.packages.${pkgs.system}.twilight
 
+		hyprcursor
+
 		nerd-fonts.fantasque-sans-mono
+		rose-pine-hyprcursor
+		rose-pine-cursor
 	
 	];
+
+	home.pointerCursor = {
+		gtk.enable = true;
+		x11.enable = true;
+		package = pkgs.rose-pine-cursor;
+		name = "BreezeX-RosePine-Linux";
+		x11.defaultCursor  = "BreezeX-RosePine-Linux";	
+		size = 24;
+	};	
 
 	wayland.windowManager.hyprland = {
 		enable = true;
@@ -54,11 +67,11 @@
 		};
 	};
 
-	#programs.catppuccin = {
-		#enable = true;
-		#flavor = "macchiato";
-		#accent = "mauve"
-	#};
+	catppuccin = {
+		enable = true;
+		flavor = "macchiato";
+		accent = "mauve";
+	};
 	
 	programs.alacritty = {
 		enable = true;
@@ -87,6 +100,11 @@
 			style = null;
 		};
 	};
+
+#	programs.zen = {
+#		enable = true;
+#		package = "zen-browser";
+#	};
 	
 	programs.bash = {
 		enable = true;

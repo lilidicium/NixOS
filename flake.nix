@@ -5,7 +5,11 @@
 		# NixOS official package source, using the nixos-25.05 branch here
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 		catppuccin.url = "github:catppuccin/nix";
-		zen-browser.url = "github:/0xc000022070/zen-browser-flake";
+		zen-browser = {
+			url = "github:/0xc000022070/zen-browser-flake";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		
 		sherlock.url = "github:Skxxtz/sherlock";
 		# home-manager, used for managing user configuration
 		home-manager = {
