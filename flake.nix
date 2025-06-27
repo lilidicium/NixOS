@@ -6,6 +6,7 @@
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 		catppuccin.url = "github:catppuccin/nix";
 		zen-browser.url = "github:/0xc000022070/zen-browser-flake";
+		sherlock.url = "github:Skxxtz/sherlock";
 		# home-manager, used for managing user configuration
 		home-manager = {
 			url = "github:nix-community/home-manager/release-25.05";

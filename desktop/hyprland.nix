@@ -28,6 +28,10 @@ in {
 				#"killall -q swaync;sleep .5 && swaync"
 			];
 
+			bindr = [
+				"SUPER, SUPER_L, exec, sherlock"
+			];
+
 			bind = [
 
 				# Summon
@@ -108,6 +112,11 @@ in {
 				workspace_swipe_cancel_ratio = 0.5;
 				workspace_swipe_create_new = 1;
 				workspace_swipe_forever = 1;
+			};
+
+			device = {
+				name = "razer-razer-basilisk-v3-pro";
+				sensitivity = -0.5;
 			};
 
 			general = {

@@ -12,6 +12,7 @@
 	
 	imports = [
 		./desktop/default.nix
+		inputs.sherlock.homeModules.default
 	];
 	
 	home.packages = with pkgs; [
@@ -24,11 +25,10 @@
 		statix
 		glow # terminal markdown viewer
 		btop
+		nh
 
 		vesktop
 		inputs.zen-browser.packages.${pkgs.system}.twilight
-
-		sherlock-launcher
 
 		nerd-fonts.fantasque-sans-mono
 	
@@ -54,7 +54,7 @@
 		};
 	};
 
-	#catpuccin = {
+	#programs.catppuccin = {
 		#enable = true;
 		#flavor = "macchiato";
 		#accent = "mauve"
@@ -71,12 +71,29 @@
 			selection.save_to_clipboard = true;
 		};
 	};
+
+	programs.sherlock = {
+		enable = true;
+		settings = {
+		
+			aliases = {
+				vesktop = {name = "Discord";};
+			};
+			
+			config = {
+				debug = {try_suppress_warnings = true;};
+			};
+			
+			style = null;
+		};
+	};
 	
 	programs.bash = {
 		enable = true;
 		enableCompletion = true;
 		bashrcExtra = ''
 			export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
+			fastfetch
 		'';
 		shellAliases = {
 			pls = "sudo";
