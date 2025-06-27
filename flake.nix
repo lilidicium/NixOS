@@ -28,7 +28,7 @@
 					# make home-manager a module of nixos
 					# so that home-manager will be deployed
 					# automatically when executing `nixos-rebuild switch`
-					inputs.zen-browser.packages."x86_64-linux".twilight
+					inputs.zen-browser.packages.${system}.twilight
 					catppuccin.nixosModules.catppuccin	
 					home-manager.nixosModules.home-manager {
 						home-manager.useGlobalPkgs = true;
