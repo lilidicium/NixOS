@@ -13,7 +13,8 @@
 	imports = [
 		./desktop/default.nix
 		inputs.sherlock.homeModules.default
-		inputs.zen-browser.packages.${pkgs.system}.twilight
+		inputs.zen-browser.homeModules.twilight
+#		inputs.stylix.homeManagerModules.stylix
 	];
 	
 	home.packages = with pkgs; [
@@ -35,8 +36,81 @@
 		nerd-fonts.fantasque-sans-mono
 		rose-pine-hyprcursor
 		rose-pine-cursor
+		base16-schemes
 	
 	];
+
+	programs = {
+
+		git = {
+			enable = true;
+			userName = "lilidicium";
+			userEmail = "lilidicium@gmail.com";
+		};
+
+		starship = {
+			enable = true;
+			settings = {
+				preset = "pastel-powerline";
+			};
+		};
+
+		alacritty = {
+			enable = true;
+			settings = {
+				env.TERM = "xterm-256color";
+				font = {
+					normal = {
+						family = "FantasqueSansM Nerd Font";
+						style = "Regular";
+					};
+					size = 12;
+				};
+				scrolling.multiplier = 5;
+				selection.save_to_clipboard = true;
+				};
+		};
+
+#		sherlock = {
+#			enable = true;
+#			settings = {
+#			
+#				aliases = {
+#					vesktop = {name = "Discord";};
+#				};
+#					
+#				config = {
+#					debug = {try_suppress_warnings = true;};
+#				};
+#					
+#				style = null;
+#			};
+#		};
+
+		zen-browser = {
+			enable = true;
+		};
+
+		bash = {
+			enable = true;
+			enableCompletion = true;
+			bashrcExtra = ''
+				export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
+				fastfetch
+			'';
+			shellAliases = {
+				pls = "sudo";
+				please = "sudo $(history -p !!)";
+				rebuild = "git stage . && sudo nixos-rebuild switch";
+				test = "git stage . && sudo nixos-rebuild test";
+			};
+		};
+	};
+
+	stylix = {
+		enable = true;
+		base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+	};
 
 	home.pointerCursor = {
 		gtk.enable = true;
@@ -50,76 +124,7 @@
 	wayland.windowManager.hyprland = {
 		enable = true;
 	};
-
-	programs.git = {
-		enable = true;
-		userName = "lilidicium";
-		userEmail = "lilidicium@gmail.com";
-	};
-
-	programs.starship = {
-		enable = true;
-		settings = {
-			add_newline = false;
-			aws.disabled = true;
-			gcloud.disabled = true;
-			line_break.disabled = true;
-		};
-	};
-
-	catppuccin = {
-		enable = true;
-		flavor = "macchiato";
-		accent = "mauve";
-	};
 	
-	programs.alacritty = {
-		enable = true;
-		settings = {
-			env.TERM = "xterm-256color";
-			font = {
-				size = 12;
-			};
-			scrolling.multiplier = 5;
-			selection.save_to_clipboard = true;
-		};
-	};
-
-	programs.sherlock = {
-		enable = true;
-		settings = {
-		
-			aliases = {
-				vesktop = {name = "Discord";};
-			};
-			
-			config = {
-				debug = {try_suppress_warnings = true;};
-			};
-			
-			style = null;
-		};
-	};
-	
-	programs.zen-browser = {
-		enable = true;
-	};
-	
-	programs.bash = {
-		enable = true;
-		enableCompletion = true;
-		bashrcExtra = ''
-			export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
-			fastfetch
-		'';
-		shellAliases = {
-			pls = "sudo";
-			please = "sudo $(history -p !!)";
-			rebuild = "git stage . && sudo nixos-rebuild switch";
-			test = "git stage . && sudo nixos-rebuild test";
-		};
-	};
-
 	# This value lets home Manager know
 	# what version it started on so that
 	# it doesn't break your config when

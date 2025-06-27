@@ -2,15 +2,26 @@
 	description = "Maggie's NixOS config";
 
 	inputs = {
+	
 		# NixOS official package source, using the nixos-25.05 branch here
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-		catppuccin.url = "github:catppuccin/nix";
+		
 		zen-browser = {
 			url = "github:/0xc000022070/zen-browser-flake";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		
-		sherlock.url = "github:Skxxtz/sherlock";
+		sherlock = {
+			url = "github:Skxxtz/sherlock";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+
+		stylix = {
+			url = "github:nix-community/stylix/release-25.05";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		
 		# home-manager, used for managing user configuration
 		home-manager = {
 			url = "github:nix-community/home-manager/release-25.05";
@@ -19,10 +30,11 @@
 			# the `inputs.nixpkg` of the current flake, to avoid
 			# problems caused by different versions of nixpkgs.
 			inputs.nixpkgs.follows = "nixpkgs";
+			
 		};
 	};
 
-	outputs = inputs@{ nixpkgs, catppuccin, home-manager, zen-browser, ... }: {
+	outputs = inputs@{ nixpkgs, stylix, home-manager, zen-browser, ... }: {
 		nixosConfigurations = {
 			nixos = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
@@ -30,18 +42,18 @@
 				modules = [
 					# Import configuration.nix
 					./configuration.nix
+
+					stylix.nixosModules.stylix
+					
 					# make home-manager a module of nixos
 					# so that home-manager will be deployed
 					# automatically when executing `nixos-rebuild switch`
-#					inputs.zen-browser.packages.${pkgs.system}.twilight
-					catppuccin.nixosModules.catppuccin	
 					home-manager.nixosModules.home-manager {
 						home-manager.useGlobalPkgs = true;
 					 	home-manager.useUserPackages = true;
 					 	home-manager.users.maggie = {
 					 		imports = [
 					 			./home.nix
-					 			catppuccin.homeModules.catppuccin
 					 		];
 					 };
 					 home-manager.extraSpecialArgs = {
