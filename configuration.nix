@@ -1,124 +1,140 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+	imports = [
+  		./hardware-configuration.nix
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "mem_sleep_default=deep" ];
-  systemd.sleep.extraConfig = ''
-  	HibernateDelaySec = 30m
-  	SuspendState=mem
-  '';
+#		┓      ┓     ┓    
+#		┣┓┏┓┏┓╋┃┏┓┏┓┏┫┏┓┏┓
+#		┗┛┗┛┗┛┗┗┗┛┗┻┗┻┗ ┛ 
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-  #environment.variables.XCURSOR_SIZE2 = "32";
-
-  environment.variables.MOZ_ENABLE_WAYLAND = 1;
+	boot.loader = {
+  		systemd-boot.enable = true;
+  		efi.canTouchEfiVariables = true;
+	};
   
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.maggie = {
-    isNormalUser = true;
-    description = "Maggie";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-  };
+	boot.kernelParams = [ "mem_sleep_default=deep" ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+	systemd.sleep.extraConfig = ''
+		HibernateDelaySec = 30m
+  		SuspendState=mem
+ 	 '';
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
 
-  # Enable the Flakes feature and the accompanying new nix command-line tool
+#		┏┓┏┏╋┏┓┏┳┓
+#		┛┗┫┛┗┗ ┛┗┗
+#		  ┛       
+
+	environment.variables = {
+		MOZ_ENABLED_WAYLAND = 1;
+		NIXOS_OZONE_WL = 1;
+		EDITOR = "micro";
+		HYPRSHOT_DIR = "/home/maggie/media/images/screenshots";
+		XDG_PICTURES_DIR  = "/home/maggie/media/images/screenshots";
+	};
+
+	networking = {
+  		hostName = "nixos";
+  		wireless.iwd.enable = true;
+ 	 	networkmanager = {
+ 	 		enable = true;
+  			wifi.backend = "iwd";
+ 	 	};
+ 	 };
+
+ 	time.timeZone = "America/New_York";
+
+	i18n = {
+		defaultLocale = "en_US.UTF-8";
+		extraLocaleSettings = {
+			LC_ADDRESS = "en_US.UTF-8";
+			LC_IDENTIFICATION = "en_US.UTF-8";
+			LC_MEASUREMENT = "en_US.UTF-8";
+			LC_MONETARY = "en_US.UTF-8";
+			LC_NAME = "en_US.UTF-8";
+			LC_NUMERIC = "en_US.UTF-8";
+			LC_PAPER = "en_US.UTF-8";
+			LC_TELEPHONE = "en_US.UTF-8";
+			LC_TIME = "en_US.UTF-8";
+		};
+	};
+	
+	# Configure keymap in X11
+	services.xserver.xkb = {
+    	layout = "us";
+	   	variant = "";
+	};
+	
+	# Allow unfree packages
+	nixpkgs.config.allowUnfree = true;
+
+	# enable NUR
+	nixpkgs.config.packageOverrides = pkgs: {
+	    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
+	      inherit pkgs;
+	    };
+	};
+
+  	stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+
+
+#		┓┏ ┏┏┓┏┓
+#		┗┻ ┛┗ ┛ 
+
+	users.users.maggie = {
+    	isNormalUser = true;
+    	description = "Maggie";
+    	extraGroups = [ "networkmanager" "wheel" ];
+    	packages = with pkgs; [];
+  	};
+
+
+#  		      ┓        
+#		┏┓┏┓┏ ┃┏┏┓┏┓┏┓┏
+#		┣┛┗┻┗ ┛┗┗┻┗┫┗ ┛
+#		┛          ┛ 
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   environment.systemPackages = with pkgs; [
   
-    git
-    wget
-    brightnessctl
-    playerctl
+    	git
+    	wget
+    	brightnessctl
+    	playerctl
     
-    micro
+    	micro
 
-    hyprnome
+    	hyprnome
 
-   # inputs.zen-browser.packages."${system}".specific
+   	  # inputs.zen-browser.packages."${system}".specific
     
-  ];
+  	];
 
-  programs.hyprland.enable = true;
-  #environment.sessionvariables.NIXOS_OZONE_WL = "1"; # hints electron apps to use wayland
+  	programs = {
+  	
+  		hyprland = {
+  			enable = true;
+  		};
 
-  # Set the default editor to micro
-  environment.variables.EDITOR = "micro";
+  		steam = {
+  			enable = true;
+  		};
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  		appimage = {
+  			enable = true;
+  			binfmt = true;
+  		};
+  		
+  	};
 
-  # List services that you want to enable:
+  	console = {
+  		earlySetup = true;
+ # 		font = "${pkgs.nerd-fonts.fantasque-sans-mono}/share/fonts/truetype/NerdFonts/FantasqueSansM/FantasqueSansMNerdFont-Regular";
+ # 		packages = with pkgs; [nerd-fonts.fantasque-sans-mono];
+  	};
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # no need to change this :3
 
 }

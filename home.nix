@@ -1,44 +1,79 @@
 { config, pkgs, inputs, ... }:
-#{config, pkgs, ... }:
 
 {
-	home.username = "maggie";
-	home.homeDirectory = "/home/maggie";
 
-	xresources.properties = {
-		"Xcursor.size" = 24;
-		"Xft.dpi" = 172;
-	};
-	
 	imports = [
 		./desktop/default.nix
 		inputs.sherlock.homeModules.default
 		inputs.zen-browser.homeModules.twilight
-#		inputs.stylix.homeManagerModules.stylix
+		inputs.textfox.homeManagerModules.default
 	];
+
+          
+#		┏┓┏┏╋┏┓┏┳┓
+#		┛┗┫┛┗┗ ┛┗┗
+#		  ┛  
+
+	home.username = "maggie";
+	home.homeDirectory = "/home/maggie";
 	
+	wayland.windowManager.hyprland = {
+		enable = true;
+	};
+
+	xresources.properties = {
+		"Xcursor.size" = 24;
+		"Xft.dpi" = 96;
+	};
+	
+	home.pointerCursor = {
+		gtk.enable = true;
+		x11.enable = true;
+		package = pkgs.rose-pine-cursor;
+		name = "BreezeX-RosePine-Linux";
+		x11.defaultCursor  = "BreezeX-RosePine-Linux";	
+		size = 24;
+	};	
+
+
+#		      ┓        
+#		┏┓┏┓┏ ┃┏┏┓┏┓┏┓┏
+#		┣┛┗┻┗ ┛┗┗┻┗┫┗ ┛
+#		┛          ┛  
+
 	home.packages = with pkgs; [
-
-		fastfetch
-
+	
+		# terminal tools
 		man
 		tldr
 		tree
-		statix
+		iwd
+
+		# terminal apps
 		glow # terminal markdown viewer
 		btop
+		fastfetch
+
+		#nix helpers
+		statix
 		nh
 
 		vesktop
 
 		hyprcursor
+		hyprshot
 
-		nerd-fonts.fantasque-sans-mono
-		rose-pine-hyprcursor
-		rose-pine-cursor
-		base16-schemes
+		# dependencies
+		wl-clipboard-rs
+
+		zrythm
 	
 	];
+
+
+#		┏┓┏┓┏┓┏┓┏┓┏┓┏┳┓┏
+#		┣┛┛ ┗┛┗┫┛ ┗┻┛┗┗┛
+#		┛      ┛     
 
 	programs = {
 
@@ -51,7 +86,7 @@
 		starship = {
 			enable = true;
 			settings = {
-				preset = "pastel-powerline";
+			
 			};
 		};
 
@@ -60,10 +95,6 @@
 			settings = {
 				env.TERM = "xterm-256color";
 				font = {
-					normal = {
-						family = "FantasqueSansM Nerd Font";
-						style = "Regular";
-					};
 					size = 12;
 				};
 				scrolling.multiplier = 5;
@@ -71,26 +102,66 @@
 				};
 		};
 
-#		sherlock = {
-#			enable = true;
-#			settings = {
-#			
-#				aliases = {
-#					vesktop = {name = "Discord";};
-#				};
-#					
-#				config = {
-#					debug = {try_suppress_warnings = true;};
-#				};
-#					
-#				style = null;
-#			};
-#		};
-
 		zen-browser = {
 			enable = true;
 		};
 
+		firefox = {
+			enable = true;
+			
+			profiles = {
+				default = {
+					id = 0;
+					name = "default";
+					isDefault = true;
+					settings = {
+						"browser.startup.homepage" = "https://startpage.com";
+						"browser.search.defaultenginename" = "Startpage";
+						"browser.search.order.1" = "Startpage";
+						"extensions.autoDisableScopes" = 0;
+					};
+					extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+						ublock-origin	
+					];
+					search = {
+						force = true;
+						default = "Startpage";
+						order = [ "Startpage" "Google "];
+						engines = {
+						
+							"Nix Packages" = {
+								urls = [{
+									template = "https://search.nixos.org/packages";
+									params = [
+										{ name = "type"; value = "packages"; }
+										{ name = "query"; value = "{searchTerms}"; }
+									];
+								}];
+								icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+								definedAliases = [ "@np" ];
+							};
+							
+							"NixOS Wiki" = {
+							    urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+					            icon = "https://nixos.wiki/favicon.png";
+					            updateInterval = 24 * 60 * 60 * 1000; # every day
+				                definedAliases = [ "@nw" ];
+				            };
+
+				            "Startpage" = {
+				            	urls = [{ template = "https://www.startpage.com/sp/search?query={searchTerms}"; }];
+				          #  	iconUpdateURL = "https://startpage.com/favicon.png"
+				          		definedAliases = [ "@sp" ];
+				            };
+
+							"bing".metaData.hidden = true;
+							"google".metaData.alias = [ "@g" ];
+						};
+					};
+				};
+			};
+		};
+			
 		bash = {
 			enable = true;
 			enableCompletion = true;
@@ -101,34 +172,40 @@
 			shellAliases = {
 				pls = "sudo";
 				please = "sudo $(history -p !!)";
-				rebuild = "git stage . && sudo nixos-rebuild switch";
+				rebuild = "git stage . && sudo nixos-rebuild switch --impure";
 				test = "git stage . && sudo nixos-rebuild test";
 			};
 		};
 	};
 
+
+#		    ┓  
+#		┏╋┓┏┃┏┓
+#		┛┗┗┫┗┗ 
+#		   ┛   
+
 	stylix = {
 		enable = true;
-		base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+			fonts = {
+			    serif = {
+			      package = pkgs.paratype-pt-serif;
+		    	  name = "PT Serif"; };
+		 	  sansSerif = {
+		 	     package = pkgs.inter;
+		 	     name = "Inter"; };
+		 	   monospace = {
+		 	     package = pkgs.nerd-fonts.fantasque-sans-mono;
+		 	     name = "FantasqueSansM Nerd Font"; };
+		 	   emoji = {
+		 	     package = pkgs.noto-fonts-emoji;
+		 	     name = "Noto Color Emoji"; };
+			 };
 	};
 
-	home.pointerCursor = {
-		gtk.enable = true;
-		x11.enable = true;
-		package = pkgs.rose-pine-cursor;
-		name = "BreezeX-RosePine-Linux";
-		x11.defaultCursor  = "BreezeX-RosePine-Linux";	
-		size = 24;
-	};	
-
-	wayland.windowManager.hyprland = {
-		enable = true;
+	textfox = {
+				enable = true;
+				profile = "default";
 	};
-	
-	# This value lets home Manager know
-	# what version it started on so that
-	# it doesn't break your config when
-	# it introduces backward-incompatible
-	# changes. No need to change this.
-	home.stateVersion = "25.05";
+
+	home.stateVersion = "25.05"; # no need to change this :3
 }

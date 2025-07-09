@@ -16,10 +16,23 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		nur = {
+		    url = "github:nix-community/NUR";
+		    inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+		firefox-addons = {
+			url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 
 		stylix = {
 			url = "github:nix-community/stylix/release-25.05";
 			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+		textfox = {
+			url = "github:adriankarlen/textfox";
 		};
 		
 		# home-manager, used for managing user configuration

@@ -41,15 +41,16 @@ in {
 				#"killall -q swaync;sleep .5 && swaync"
 			];
 
-			bindr = [
-				"SUPER, SUPER_L, exec, sherlock"
-			];
+	#		bindr = [
+	#			"SUPER, SUPER_L, exec, sherlock"
+	#		];
 
 			bind = [
 
 				# Summon
 				"SUPER, T, exec, alacritty"
-				"SUPER, B, exec, zen"
+				"SUPER, B, exec, firefox"
+				"SUPER, D, exec, vesktop"
 				
 				# Window
 				"SUPER, Q, killactive"
@@ -69,6 +70,10 @@ in {
 				"SUPER, 2, exec, hyprnome"
 				"SUPER_SHIFT, 1, exec, hyprnome --previous --move"
 				"SUPER_SHIFT, 2, exec, hyprnome --move"
+
+				# Screenshot
+				" , PRINT, exec, hyprshot -m output"
+				"SUPER, PRINT, exec, hyprshot -m window"
 			];
 
 			bindel = [
@@ -99,6 +104,10 @@ in {
 				"suppressevent maximize, class:.*"
 				"nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
 			];
+
+			animation = [
+				"workspaces, 1, 3, default, slidefade 20%"
+			];
 			
 			input = {
 				kb_layout = "us";
@@ -128,17 +137,12 @@ in {
 				workspace_swipe_forever = 0;
 			};
 
-			device = {
-				name = "razer-razer-basilisk-v3-pro";
-				sensitivity = -0.5;
-			};
-
 			general = {
 				"$modifier" = "SUPER";
 				layout = "dwindle";
 				gaps_in = 5;
 				gaps_out = 10;
-				border_size = 0;
+				border_size = 2;
 				resize_on_border = false;
 			};
 
@@ -163,9 +167,9 @@ in {
 			};
 
 			decoration = {
-				rounding = 10;
+				rounding = 0;
 				blur = {
-					enabled = true;
+					enabled = false;
 					size = 5;
 					passes = 3;
 					ignore_opacity = false;
@@ -175,7 +179,6 @@ in {
 					enabled = true;
 					range = 4;
 					render_power = 3;
-					color = "rgba(1a1a1aee)";
 				};
 			};
 
@@ -213,9 +216,26 @@ in {
 			};
 		};
 		
-		extraConfig = "
-		monitor = preferred, 1920x1080@60, auto, 1
-		";
+		extraConfig = ''
+		
+			monitor = preferred, 1920x1080@60, auto, 1
+			
+			device { 
+				name = razer-razer-basilisk-v3-pro-mouse
+				sensitivity = -0.8
+			}
+
+			device { 
+				name = razer-razer-basilisk-v3-pro-1
+				sensitivity = -0.8
+			}
+
+			device { 
+				name = tpps/2-elan-trackpoint
+				sensitivity = -0.7
+			}
+						
+		'';
 		# ${extraMonitorSettings}
 		# layerrule = blur, waybar
 		# (uncomment and put inside quotes to use)
