@@ -138,9 +138,9 @@
 						"browser.search.order.1" = "Startpage";
 						"extensions.autoDisableScopes" = 0;
 					};
-					extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-						ublock-origin	
-					];
+#					extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+#						ublock-origin	
+#					];
 					search = {
 						force = true;
 						default = "Startpage";
