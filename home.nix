@@ -65,7 +65,25 @@
 
 		# dependencies
 		wl-clipboard-rs
+		playerctl
+		ddcutil
+		swaynotificationcenter
+		light
+		bluez
 
+		pavucontrol
+
+		nwg-panel
+		nwg-displays
+		nwg-dock-hyprland
+		nwg-drawer
+		nwg-look
+		nwg-menu
+		nwg-bar
+
+		modrinth-app
+		lunar-client
+		
 		zrythm
 	
 	];
@@ -103,9 +121,9 @@
 		};
 
 		zen-browser = {
-			enable = true;
+			enable = false;
 		};
-
+		
 		firefox = {
 			enable = true;
 			

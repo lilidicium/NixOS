@@ -45,6 +45,10 @@
 
  	time.timeZone = "America/New_York";
 
+# 	hardware.bluetooth.enable = true;
+# 	hadware.bluetooth.powerOnBoot = true;
+ 	services.blueman.enable = true;
+
 	i18n = {
 		defaultLocale = "en_US.UTF-8";
 		extraLocaleSettings = {

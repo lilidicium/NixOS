@@ -218,7 +218,7 @@ in {
 		
 		extraConfig = ''
 		
-			monitor = preferred, 1920x1080@60, auto, 1
+			monitor = eDP-1, preferred, auto, 1
 			
 			device { 
 				name = razer-razer-basilisk-v3-pro-mouse
