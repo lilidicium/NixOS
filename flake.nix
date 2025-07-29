@@ -39,6 +39,10 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		caelestia-cli = {
+			url = "github:caelestia-dots/cli";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 #		caelestia = {
 #			url = "github:caelestia-dots/caelestia";
 #		};
@@ -62,7 +66,7 @@
 		nixosConfigurations = {
 			nixos = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
-				specialArgs = {inherit inputs;};
+				specialArgs = { inherit inputs; };
 				modules = [
 					# Import configuration.nix
 					./configuration.nix

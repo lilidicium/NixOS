@@ -25,25 +25,19 @@ in {
 		};
 		
 		settings = {
-
-#			env = [
-#				"HYPRCURSOR_THEME,rose-pine-hyprcursor"
-#				"HYPRCURSOR_SIZE, 24"
-#				"XCURSOR_THEME,rose-pine-cursor"
-#				"XCURSOR_SIZE, 24"
-#				"MOZ_ENABLE_WAYLAND,1"
-#			];
 			
 			exec-once = [
-				"swww-daemon"
-				"hyprctl setcursor rose-pine-hyprcursor 24"
+
+				"caelestia shell"
+				"hyprctl setcursor rose-pine-hyprcursor 36"
+				
 				#"killall -q waybar; sleep .5 && waybar"
 				#"killall -q swaync;sleep .5 && swaync"
 			];
 
-	#		bindr = [
-	#			"SUPER, SUPER_L, exec, sherlock"
-	#		];
+			bindr = [
+				"SUPER, SUPER_L, exec, sherlock"
+			];
 
 			bind = [
 
@@ -112,7 +106,7 @@ in {
 			input = {
 				kb_layout = "us";
 				kb_options = [
-					"alt:nocaps"
+				
 				];
 				numlock_by_default = true;
 				repeat_delay = 300;
@@ -132,7 +126,7 @@ in {
 				workspace_swipe_distance = 500;
 				workspace_swipe_invert = 1;
 				workspace_swipe_min_speed_to_force = 30;
-				workspace_swipe_cancel_ratio = 0.5;
+				workspace_swipe_cancel_ratio = 0.3;
 				workspace_swipe_create_new = 1;
 				workspace_swipe_forever = 0;
 			};
@@ -142,7 +136,7 @@ in {
 				layout = "dwindle";
 				gaps_in = 5;
 				gaps_out = 10;
-				border_size = 2;
+				border_size = 0;
 				resize_on_border = false;
 			};
 
@@ -162,12 +156,12 @@ in {
 
 			dwindle = {
 				pseudotile = false;
-				preserve_split = true;
+				preserve_split = false;
 				force_split = 2;
 			};
 
 			decoration = {
-				rounding = 0;
+				rounding = 15;
 				blur = {
 					enabled = false;
 					size = 5;

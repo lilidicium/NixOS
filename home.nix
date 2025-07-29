@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, specialArgs, ... }:
+{ config, pkgs, lib, inputs, specialArgs, ... }:
 
 {
 
@@ -24,7 +24,7 @@
 	};
 
 	xresources.properties = {
-		"Xcursor.size" = 24;
+		"Xcursor.size" = 36;
 		"Xft.dpi" = 96;
 	};
 	
@@ -34,7 +34,7 @@
 		package = pkgs.rose-pine-cursor;
 		name = "BreezeX-RosePine-Linux";
 		x11.defaultCursor  = "BreezeX-RosePine-Linux";	
-		size = 24;
+		size = 36;
 	};	
 
 
@@ -62,18 +62,32 @@
 		hyprshot
 
 		# dependencies
+		brightnessctl
+		playerctl		
+		cava
+		networkmanager
+		fish
+		aubio
+		grim
+		bluez
+		swappy
+		power-profiles-daemon
 		wl-clipboard-rs
 		playerctl
 		ddcutil
 		swaynotificationcenter
 		light
-		bluez
+		libqalculate
 
+		material-symbols
+		nerd-fonts.jetbrains-mono
+		
 		pavucontrol
 
 		modrinth-app
 
 		inputs.caelestia-shell.packages."${pkgs.system}".default
+		inputs.caelestia-cli.packages."${pkgs.system}".default
 	
 	];
 
@@ -101,12 +115,12 @@
 			enable = true;
 			settings = {
 				env.TERM = "xterm-256color";
-				font = {
-					size = 12;
-				};
+				font = { size = lib.mkForce 18; };
 				scrolling.multiplier = 5;
 				selection.save_to_clipboard = true;
-				};
+				window.padding = { x=20; y=20; };
+#				window.opacity = { 0.8; };
+			};
 		};
 
 		zen-browser = {
