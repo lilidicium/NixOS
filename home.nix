@@ -1,8 +1,5 @@
 { config, pkgs, inputs, specialArgs, ... }:
 
-	let
-		inherit (specialArgs) addons;
-
 {
 
 	imports = [
@@ -133,13 +130,13 @@
 #					extensions = with pkgs.nur.repos.rycee.firefox-addons; [
 #						ublock-origin	
 #					];
-					extensions = {
-						packages  = with addons; [
-
-							ublock-origin
-							
-						];
-					};
+#					extensions = {
+#						packages  = with pkgs.nur.repos.rycee.firefox-addons; [
+#
+#							ublock-origin
+#							
+#						];
+#					};
 					search = {
 						force = true;
 						default = "Startpage";

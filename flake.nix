@@ -57,8 +57,8 @@
 	
 #@{ nixpkgs, stylix, home-manager, zen-browser, ... }
 
-	outputs = inputs@{ nixpkgs, stylix, home-manager, zen-browser, pkgs, ... }: {
-		
+	outputs = inputs@{ nixpkgs, stylix, home-manager, zen-browser, ... }: {
+
 		nixosConfigurations = {
 			nixos = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
@@ -81,9 +81,9 @@
 					 			./home.nix
 					 		];
 					 };
-					 extraArgs = {
-					 	addons = pkgs.nur.repos.rycee.firefox-addons;
-					 };
+#					 extraArgs = {
+#					 	addons = pkgs.nur.repos.rycee.firefox-addons;
+#					 };
 					 home-manager.extraSpecialArgs = {
 					 	inherit inputs;
 				   	 };
