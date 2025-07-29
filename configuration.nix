@@ -5,80 +5,15 @@
   		./hardware-configuration.nix
     ];
 
-#		┓      ┓     ┓    
-#		┣┓┏┓┏┓╋┃┏┓┏┓┏┫┏┓┏┓
-#		┗┛┗┛┗┛┗┗┗┛┗┻┗┻┗ ┛ 
-
-	boot.loader = {
-  		systemd-boot.enable = true;
-  		efi.canTouchEfiVariables = true;
-	};
-  
-	boot.kernelParams = [ "mem_sleep_default=deep" ];
-
-	systemd.sleep.extraConfig = ''
-		HibernateDelaySec = 30m
-  		SuspendState=mem
- 	 '';
-
-
 #		┏┓┏┏╋┏┓┏┳┓
 #		┛┗┫┛┗┗ ┛┗┗
 #		  ┛       
-
-	environment.variables = {
-		MOZ_ENABLED_WAYLAND = 1;
-		NIXOS_OZONE_WL = 1;
-		EDITOR = "micro";
-		HYPRSHOT_DIR = "/home/maggie/media/images/screenshots";
-		XDG_PICTURES_DIR  = "/home/maggie/media/images/screenshots";
-	};
-
-	networking = {
-  		hostName = "nixos";
-  		wireless.iwd.enable = true;
- 	 	networkmanager = {
- 	 		enable = true;
-  			wifi.backend = "iwd";
- 	 	};
- 	 };
-
- 	time.timeZone = "America/New_York";
-
-# 	hardware.bluetooth.enable = true;
-# 	hadware.bluetooth.powerOnBoot = true;
- 	services.blueman.enable = true;
-
-	i18n = {
-		defaultLocale = "en_US.UTF-8";
-		extraLocaleSettings = {
-			LC_ADDRESS = "en_US.UTF-8";
-			LC_IDENTIFICATION = "en_US.UTF-8";
-			LC_MEASUREMENT = "en_US.UTF-8";
-			LC_MONETARY = "en_US.UTF-8";
-			LC_NAME = "en_US.UTF-8";
-			LC_NUMERIC = "en_US.UTF-8";
-			LC_PAPER = "en_US.UTF-8";
-			LC_TELEPHONE = "en_US.UTF-8";
-			LC_TIME = "en_US.UTF-8";
-		};
-	};
 	
 	# Configure keymap in X11
-	services.xserver.xkb = {
-    	layout = "us";
-	   	variant = "";
-	};
-	
-	# Allow unfree packages
-	nixpkgs.config.allowUnfree = true;
-
-	# enable NUR
-	nixpkgs.config.packageOverrides = pkgs: {
-	    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
-	      inherit pkgs;
-	    };
-	};
+#	services.xserver.xkb = {
+ #   	layout = "us";
+#	   	variant = "";
+#	};
 
   	stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 

@@ -16,14 +16,13 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		nur = {
+		nurpkgs = {
 		    url = "github:nix-community/NUR";
-		    inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		firefox-addons = {
-			url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-			inputs.nixpkgs.follows = "nixpkgs";
+		rycee-nurpkgs = {
+		  url = gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons;
+		  inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		stylix = {
@@ -34,6 +33,15 @@
 		textfox = {
 			url = "github:adriankarlen/textfox";
 		};
+
+		caelestia-shell = {
+			url = "github:caelestia-dots/shell";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+#		caelestia = {
+#			url = "github:caelestia-dots/caelestia";
+#		};
 		
 		# home-manager, used for managing user configuration
 		home-manager = {
@@ -46,8 +54,11 @@
 			
 		};
 	};
+	
+#@{ nixpkgs, stylix, home-manager, zen-browser, ... }
 
-	outputs = inputs@{ nixpkgs, stylix, home-manager, zen-browser, ... }: {
+	outputs = inputs@{ nixpkgs, stylix, home-manager, zen-browser, pkgs, ... }: {
+		
 		nixosConfigurations = {
 			nixos = nixpkgs.lib.nixosSystem {
 				system = "x86_64-linux";
@@ -55,6 +66,7 @@
 				modules = [
 					# Import configuration.nix
 					./configuration.nix
+					/etc/nixos/modules/system.nix
 
 					stylix.nixosModules.stylix
 					
@@ -68,6 +80,9 @@
 					 		imports = [
 					 			./home.nix
 					 		];
+					 };
+					 extraArgs = {
+					 	addons = pkgs.nur.repos.rycee.firefox-addons;
 					 };
 					 home-manager.extraSpecialArgs = {
 					 	inherit inputs;

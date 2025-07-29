@@ -1,4 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, specialArgs, ... }:
+
+	let
+		inherit (specialArgs) addons;
 
 {
 
@@ -7,6 +10,8 @@
 		inputs.sherlock.homeModules.default
 		inputs.zen-browser.homeModules.twilight
 		inputs.textfox.homeManagerModules.default
+#		inputs.caelestia-shell.packages."${pkgs.system}".default
+#		inputs.caelestia-cli.packages."${pkgs.system}".default
 	];
 
           
@@ -54,10 +59,6 @@
 		btop
 		fastfetch
 
-		#nix helpers
-		statix
-		nh
-
 		vesktop
 
 		hyprcursor
@@ -73,18 +74,9 @@
 
 		pavucontrol
 
-		nwg-panel
-		nwg-displays
-		nwg-dock-hyprland
-		nwg-drawer
-		nwg-look
-		nwg-menu
-		nwg-bar
-
 		modrinth-app
-		lunar-client
-		
-		zrythm
+
+		inputs.caelestia-shell.packages."${pkgs.system}".default
 	
 	];
 
@@ -141,6 +133,13 @@
 #					extensions = with pkgs.nur.repos.rycee.firefox-addons; [
 #						ublock-origin	
 #					];
+					extensions = {
+						packages  = with addons; [
+
+							ublock-origin
+							
+						];
+					};
 					search = {
 						force = true;
 						default = "Startpage";
@@ -179,6 +178,10 @@
 				};
 			};
 		};
+
+#		caelestia-shell = {
+#			enable = true;
+#		};
 			
 		bash = {
 			enable = true;
@@ -217,7 +220,9 @@
 		 	   emoji = {
 		 	     package = pkgs.noto-fonts-emoji;
 		 	     name = "Noto Color Emoji"; };
-			 };
+			};
+			
+			targets.firefox.profileNames = [ "default" ];
 	};
 
 	textfox = {
