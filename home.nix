@@ -7,8 +7,6 @@
 		inputs.sherlock.homeModules.default
 		inputs.zen-browser.homeModules.twilight
 		inputs.textfox.homeManagerModules.default
-#		inputs.caelestia-shell.packages."${pkgs.system}".default
-#		inputs.caelestia-cli.packages."${pkgs.system}".default
 	];
 
           
@@ -52,7 +50,6 @@
 		iwd
 
 		# terminal apps
-		glow # terminal markdown viewer
 		btop
 		fastfetch
 
@@ -75,9 +72,6 @@
 		wl-clipboard-rs
 		playerctl
 		ddcutil
-		swaynotificationcenter
-		light
-		libqalculate
 
 		material-symbols
 		nerd-fonts.jetbrains-mono
@@ -124,6 +118,32 @@
 		};
 
 		zen-browser = {
+			enable = true;
+			profiles = {
+				default = {
+					id = 0;
+					name = "default";
+					isDefault = true;
+					settings = {
+						"browser.startup.homepage" = "https://startpage.com";
+						"browser.search.defaultenginename" = "Startpage";
+						"browser.search.order.1" = "Startpage";
+					};
+					search = {
+						force = true;
+						default = "Startpage";
+						order = [ "Startpage" "Google "];
+						engines = {
+				            "Startpage" = {
+				            	urls = [{ template = "https://www.startpage.com/sp/search?query={searchTerms}"; }];
+				           	};
+				        };
+				    };
+				};
+			};
+		};
+
+		sherlock = {
 			enable = false;
 		};
 		
@@ -141,16 +161,7 @@
 						"browser.search.order.1" = "Startpage";
 						"extensions.autoDisableScopes" = 0;
 					};
-#					extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-#						ublock-origin	
-#					];
-#					extensions = {
-#						packages  = with pkgs.nur.repos.rycee.firefox-addons; [
-#
-#							ublock-origin
-#							
-#						];
-#					};
+					
 					search = {
 						force = true;
 						default = "Startpage";
@@ -189,10 +200,6 @@
 				};
 			};
 		};
-
-#		caelestia-shell = {
-#			enable = true;
-#		};
 			
 		bash = {
 			enable = true;

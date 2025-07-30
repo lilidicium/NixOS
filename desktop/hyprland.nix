@@ -36,14 +36,15 @@ in {
 			];
 
 			bindr = [
-				"SUPER, SUPER_L, exec, sherlock"
+	#			"SUPER, SUPER_L, exec, sherlock"
 			];
 
 			bind = [
 
 				# Summon
+				"SUPER, A, exec, sherlock"
 				"SUPER, T, exec, alacritty"
-				"SUPER, B, exec, firefox"
+				"SUPER, B, exec, zen-browser"
 				"SUPER, D, exec, vesktop"
 				
 				# Window

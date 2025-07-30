@@ -28,6 +28,8 @@
     	packages = with pkgs; [];
   	};
 
+home-manager.backupFileExtension = "backup";
+
 
 #  		      ┓        
 #		┏┓┏┓┏ ┃┏┏┓┏┓┏┓┏
