@@ -30,6 +30,7 @@ in {
 
 				"caelestia shell"
 				"hyprctl setcursor rose-pine-hyprcursor 36"
+				"nwggrid-server"
 				
 				#"killall -q waybar; sleep .5 && waybar"
 				#"killall -q swaync;sleep .5 && swaync"
@@ -42,15 +43,17 @@ in {
 			bind = [
 
 				# Summon
-				"SUPER, A, exec, sherlock"
+				"SUPER, A, exec, nwggrid -client"
+				"SUPER, D, exec, nwgdmenu"
 				"SUPER, T, exec, alacritty"
-				"SUPER, B, exec, zen-browser"
-				"SUPER, D, exec, vesktop"
+				"SUPER, B, exec, zen"
+				"SUPER, V, exec, vesktop"
 				
 				# Window
 				"SUPER, Q, killactive"
-				"SUPER SHIFT, F, togglefloating"
-
+				"SUPER ALT, F, togglefloating"
+				"SUPER SHIFT, F, fullscreen"
+ 
 				# Focus
 				"SUPER, left, movefocus, l"
 				"SUPER, right, movefocus, r"
@@ -101,7 +104,9 @@ in {
 			];
 
 			animation = [
-				"workspaces, 1, 3, default, slidefade 20%"
+				"workspaces, 1, 3, default, slidefadevert 20%"
+				"windows, 1, 3, default, popin"
+				"windowsMove, 1, 3, default, slide"
 			];
 			
 			input = {
@@ -162,7 +167,7 @@ in {
 			};
 
 			decoration = {
-				rounding = 15;
+				rounding = 18;
 				blur = {
 					enabled = false;
 					size = 5;
