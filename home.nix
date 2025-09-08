@@ -82,6 +82,7 @@
 		pavucontrol
 
 		modrinth-app
+		renpy
 
 		mcpelauncher-ui-qt
 
