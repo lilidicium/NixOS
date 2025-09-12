@@ -17,6 +17,33 @@
 
   	stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
 
+    swapDevices = [
+    {
+        device = "/var/lib/swapfile";
+        size = 16 * 1024; # 32GB in MB
+      }
+    ];
+
+
+    boot.kernelParams = ["resume_offset=32768" "mem_sleep_default=deep"];
+    
+    boot.resumeDevice = "/dev/disk/by-uuid/a350e453-27b3-4103-9700-79c125cbbe61";
+    
+    powerManagement.enable = true;
+
+  services.power-profiles-daemon.enable = true;
+  # Suspend first then hibernate when closing the lid
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  # Hibernate on power button pressed
+  services.logind.powerKey = "hibernate";
+  services.logind.powerKeyLongPress = "poweroff";
+
+  # Define time delay for hibernation
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=30m
+    SuspendState=mem
+  '';
+
 
 #		┓┏ ┏┏┓┏┓
 #		┗┻ ┛┗ ┛ 

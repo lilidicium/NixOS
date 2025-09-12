@@ -32,12 +32,15 @@ in {
 				"hyprctl setcursor rose-pine-hyprcursor 36"
 				"nwggrid-server"
 				
+				"nix-env --delete-generations 14d"
+				"nix-store --gc"
+				
 				#"killall -q waybar; sleep .5 && waybar"
 				#"killall -q swaync;sleep .5 && swaync"
 			];
 
 			bindr = [
-	#			"SUPER, SUPER_L, exec, sherlock"
+
 			];
 
 			bind = [
@@ -62,6 +65,7 @@ in {
 								
 				# Compositor
 				"SUPER, M, exit"
+				"SUPER ALT SHIFT, C, exec, caelestia shell"
 
 				# Workspace (hyprnome)
 				"SUPER, 1, exec, hyprnome --previous"

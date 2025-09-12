@@ -54,6 +54,7 @@
 		fastfetch
 
 		vesktop
+		nemo
 
 		nwg-launchers
 
@@ -82,6 +83,7 @@
 		pavucontrol
 
 		modrinth-app
+		libreoffice
 		renpy
 
 		mcpelauncher-ui-qt
