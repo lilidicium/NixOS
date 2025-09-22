@@ -55,8 +55,11 @@
 
 		vesktop
 		nemo
-
+		
 		nwg-launchers
+
+		woeusb-ng
+		ntfs3g
 
 		pyprland
 		hyprcursor
@@ -77,8 +80,7 @@
 		playerctl
 		ddcutil
 
-		material-symbols
-		nerd-fonts.jetbrains-mono
+		ventoy-full-gtk
 		
 		pavucontrol
 
@@ -88,11 +90,30 @@
 
 		mcpelauncher-ui-qt
 
+		material-symbols
 		inputs.caelestia-shell.packages."${pkgs.system}".default
 		inputs.caelestia-cli.packages."${pkgs.system}".default
 	
 	];
 
+  	nixpkgs.overlays = [ (
+ 
+  	  final: prev: {
+  	          material-symbols = prev.material-symbols.overrideAttrs (oldAttrs: {
+  	            version = "material-symbols-4.0.0-unstable-2024-05-17";
+  	
+  	            src = final.fetchFromGitHub {
+  	              owner = "google";
+  	              repo = "material-design-icons";
+  	              rev = "941fa95d7f6084a599a54ca71bc565f48e7c6d9e"; 
+  	              hash = "sha256-5bcEh7Oetd2JmFEPCcoweDrLGQTpcuaCU8hCjz8ls3M=";  
+  	              sparseCheckout = ["variablefont"];
+  	            };
+  	          }
+  	       );
+  	     } 
+  	   ) 
+  	];  
 
 #		┏┓┏┓┏┓┏┓┏┓┏┓┏┳┓┏
 #		┣┛┛ ┗┛┗┫┛ ┗┻┛┗┗┛

@@ -74,7 +74,7 @@ in {
 				"SUPER_SHIFT, 2, exec, hyprnome --move"
 
 				# Screenshot
-				" , PRINT, exec, hyprshot -m output"
+				" , PRINT, exec, hyprshot -m region"
 				"SUPER, PRINT, exec, hyprshot -m window"
 			];
 

@@ -24,6 +24,17 @@
       }
     ];
 
+    
+      # Define time delay for hibernation
+      systemd.sleep.extraConfig = ''
+        HibernateDelaySec=30m
+        SuspendState=mem
+      '';
+
+services.devmon.enable = true;
+services.gvfs.enable = true; 
+services.udisks2.enable = true;
+
 
     boot.kernelParams = ["resume_offset=32768" "mem_sleep_default=deep"];
     
@@ -38,12 +49,6 @@
   services.logind.powerKey = "hibernate";
   services.logind.powerKeyLongPress = "poweroff";
 
-  # Define time delay for hibernation
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=30m
-    SuspendState=mem
-  '';
-
 
 #		┓┏ ┏┏┓┏┓
 #		┗┻ ┛┗ ┛ 
@@ -57,6 +62,10 @@
 
 home-manager.backupFileExtension = "backup";
 
+nixpkgs.config.permittedInsecurePackages = [
+                "ventoy-gtk3-1.1.05"
+              ];
+
 
 #  		      ┓        
 #		┏┓┏┓┏ ┃┏┏┓┏┓┏┓┏
@@ -64,6 +73,8 @@ home-manager.backupFileExtension = "backup";
 #		┛          ┛ 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nixpkgs.config.allowUnfree = true;
   
   environment.systemPackages = with pkgs; [
   
