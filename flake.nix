@@ -70,7 +70,6 @@
 				modules = [
 					# Import configuration.nix
 					./configuration.nix
-					./modules
 
 					stylix.nixosModules.stylix
 					

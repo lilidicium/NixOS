@@ -31,9 +31,9 @@ in
   nixpkgs.overlays = [ material-symbols-overlay ];
 
 	imports = [
-		./modules/default.nix
+		./modules/home/default.nix
 		inputs.sherlock.homeModules.default
-		inputs.zen-browser.homeModules.twilightdefault.nix
+		inputs.zen-browser.homeModules.default
 		inputs.textfox.homeManagerModules.default
 	];
 

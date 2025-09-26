@@ -3,7 +3,6 @@
 in {
 	imports = 
 	[
-		./hyprland.nix
 		./system.nix
 	];
 }
