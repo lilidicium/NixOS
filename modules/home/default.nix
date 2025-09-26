@@ -5,5 +5,6 @@ in {
 	[
 		./hyprland.nix
 		./stylix.nix
+		./packages.nix
 	];
 }
