@@ -10,11 +10,6 @@
 			url = "github:/0xc000022070/zen-browser-flake";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-			
-		sherlock = {
-			url = "github:Skxxtz/sherlock";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
 
 		nurpkgs = {
 		    url = "github:nix-community/NUR";

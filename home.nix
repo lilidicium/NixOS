@@ -32,7 +32,6 @@ in
 
 	imports = [
 		./modules/home/default.nix
-		inputs.sherlock.homeModules.default
 		inputs.zen-browser.homeModules.default
 		inputs.textfox.homeManagerModules.default
 	];
@@ -189,64 +188,6 @@ in
 			};
 		};
 
-		sherlock = {
-			enable = false;
-		};
-		
-#		firefox = {
-#			enable = false;
-#			
-#			profiles = {
-#				default = {
-#					id = 0;
-#					name = "default";
-#					isDefault = true;
-#					settings = {
-#						"browser.startup.homepage" = "https://startpage.com";
-#						"browser.search.defaultenginename" = "Startpage";
-#						"browser.search.order.1" = "Startpage";
-#						"extensions.autoDisableScopes" = 0;
-#					};
-#					
-#					search = {
-#						force = true;
-#						default = "Startpage";
-#						order = [ "Startpage" "Google "];
-#						engines = {
-#						
-#							"Nix Packages" = {
-#								urls = [{
-#									template = "https://search.nixos.org/packages";
-#									params = [
-#										{ name = "type"; value = "packages"; }
-#										{ name = "query"; value = "{searchTerms}"; }
-#									];
-#								}];
-#								icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-#								definedAliases = [ "@np" ];
-#							};
-#							
-#							"NixOS Wiki" = {
-#							    urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-#					            icon = "https://nixos.wiki/favicon.png";
-#					            updateInterval = 24 * 60 * 60 * 1000; # every day
-#				                definedAliases = [ "@nw" ];
-#				            };
-#
-#				            "Startpage" = {
-#				            	urls = [{ template = "https://www.startpage.com/sp/search?query={searchTerms}"; }];
-#				          #  	iconUpdateURL = "https://startpage.com/favicon.png"
-#				          		definedAliases = [ "@sp" ];
-#				            };
-#
-#							"bing".metaData.hidden = true;
-#							"google".metaData.alias = [ "@g" ];
-#						};
-#					};
-#				};
-#			};
-#		};
-			
 		bash = {
 			enable = true;
 			enableCompletion = true;
@@ -288,11 +229,6 @@ in
 			
 			targets.firefox.profileNames = [ "default" ];
 	};
-
-#	textfox = {
-#				enable = true;
-#				profile = "default";
-#	};
 
 	home.stateVersion = "25.05"; # no need to change this :3
 }
