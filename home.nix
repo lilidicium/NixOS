@@ -1,11 +1,39 @@
 { config, pkgs, lib, inputs, specialArgs, ... }:
 
+let
+  # Define the overlay for material-symbols
+  material-symbols-overlay = final: prev: {
+    material-symbols = prev.material-symbols.overrideAttrs (oldAttrs: {
+      src = prev.fetchFromGitHub {
+        owner = "google";
+        repo = "material-design-icons";
+        rev = "941fa95d7f6084a599a54ca71bc565f48e7c6d9e";  # Your newer commit hash
+        sha256 = "sha256-5bcEh7Oetd2JmFEPCcoweDrLGQTpcuaCU8hCjz8ls3M=";  # Your hash
+        sparseCheckout = [ "variablefont" ];  # Matches original derivation
+      };
+
+      # Ensure rename is available
+      nativeBuildInputs = oldAttrs.nativeBuildInputs or [] ++ [ prev.rename ];
+      
+      # Match the original installPhase, including rename
+      installPhase = ''
+        runHook preInstall
+        rename 's/\[FILL,GRAD,opsz,wght\]//g' variablefont/*
+        install -Dm755 variablefont/*.ttf -t $out/share/fonts/TTF
+        install -Dm755 variablefont/*.woff2 -t $out/share/fonts/woff2
+        runHook postInstall
+      '';
+    });
+  };
+in
 {
+  # Apply the provided overlay to override material-symbols
+  nixpkgs.overlays = [ material-symbols-overlay ];
 
 	imports = [
-		./desktop/default.nix
+		./modules/default.nix
 		inputs.sherlock.homeModules.default
-		inputs.zen-browser.homeModules.twilight
+		inputs.zen-browser.homeModules.twilightdefault.nix
 		inputs.textfox.homeManagerModules.default
 	];
 
@@ -88,32 +116,16 @@
 		libreoffice
 		renpy
 
+		material-symbols
+
+		vscode
+
 		mcpelauncher-ui-qt
 
-		material-symbols
 		inputs.caelestia-shell.packages."${pkgs.system}".default
 		inputs.caelestia-cli.packages."${pkgs.system}".default
-	
-	];
 
-  	nixpkgs.overlays = [ (
- 
-  	  final: prev: {
-  	          material-symbols = prev.material-symbols.overrideAttrs (oldAttrs: {
-  	            version = "material-symbols-4.0.0-unstable-2024-05-17";
-  	
-  	            src = final.fetchFromGitHub {
-  	              owner = "google";
-  	              repo = "material-design-icons";
-  	              rev = "941fa95d7f6084a599a54ca71bc565f48e7c6d9e"; 
-  	              hash = "sha256-5bcEh7Oetd2JmFEPCcoweDrLGQTpcuaCU8hCjz8ls3M=";  
-  	              sparseCheckout = ["variablefont"];
-  	            };
-  	          }
-  	       );
-  	     } 
-  	   ) 
-  	];  
+	];
 
 #		┏┓┏┓┏┓┏┓┏┓┏┓┏┳┓┏
 #		┣┛┛ ┗┛┗┫┛ ┗┻┛┗┗┛
@@ -132,6 +144,10 @@
 			settings = {
 			
 			};
+		};
+
+		vscode = {
+			enable = true;
 		};
 
 		alacritty = {
