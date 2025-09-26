@@ -92,34 +92,29 @@ in
 		hyprcursor
 		hyprshot
 
-		# dependencies
-		brightnessctl
-		playerctl		
-		cava
-		networkmanager
-		fish
-		aubio
-		grim
-		bluez
-		swappy
-		power-profiles-daemon
-		wl-clipboard-rs
-		playerctl
-		ddcutil
+		# ===== dependencies
+		# brightnessctl
+		# playerctl		
+		# cava
+		# networkmanager
+		# fish
+		# aubio
+		# grim
+		# bluez
+		# swappy
+		# power-profiles-daemon
+		# wl-clipboard-rs
+		# playerctl
+		# ddcutil
 
 		ventoy-full-gtk
 		
 		pavucontrol
 
-		modrinth-app
 		libreoffice
 		renpy
 
-		material-symbols
-
 		vscode
-
-		mcpelauncher-ui-qt
 
 		inputs.caelestia-shell.packages."${pkgs.system}".default
 		inputs.caelestia-cli.packages."${pkgs.system}".default

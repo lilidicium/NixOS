@@ -9,12 +9,7 @@
 #		┏┓┏┏╋┏┓┏┳┓
 #		┛┗┫┛┗┗ ┛┗┗
 #		  ┛       
-	
-	# Configure keymap in X11
-#	services.xserver.xkb = {
- #   	layout = "us";
-#	   	variant = "";
-#	};
+
 
   	stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
 
