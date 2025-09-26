@@ -1,5 +1,11 @@
 { config, pkgs, inputs, ... }:
 
+# This file is for installing packages and enabling programs.
+
+# If you have a program that's enabled via home-manager
+# but doesn't require its own dedicated module.nix file,
+# you can enable it here.
+
 {
   home.packages = with pkgs; [
 	
@@ -41,4 +47,26 @@
 		inputs.caelestia-cli.packages."${pkgs.system}".default
 
 	];
+
+	programs = {
+
+		git = {
+			enable = true;
+			userName = "lilidicium";
+			userEmail = "lilidicium@gmail.com";
+		};
+
+		starship = {
+			enable = true;
+			settings = {
+			
+			};
+		};
+
+		vscode = {
+			enable = true;
+		};
+    
+  };
+
 }

@@ -3,8 +3,8 @@
 in {
 	imports = 
 	[
-		./hyprland.nix
-		./stylix.nix
+		./apps
 		./packages.nix
+		./user.nix
 	];
 }

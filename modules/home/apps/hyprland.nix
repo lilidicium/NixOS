@@ -10,6 +10,22 @@ in {
 	];
 
 	# TODO: wallpaper git sync
+
+
+	xresources.properties = {
+		"Xcursor.size" = 36;
+		"Xft.dpi" = 96;
+	};
+	
+	home.pointerCursor = {
+		gtk.enable = true;
+		x11.enable = true;
+		package = pkgs.rose-pine-cursor;
+		name = "BreezeX-RosePine-Linux";
+		x11.defaultCursor  = "BreezeX-RosePine-Linux";	
+		size = 36;
+	};	
+	
 	
 	wayland.windowManager.hyprland = {
 		enable = true;
