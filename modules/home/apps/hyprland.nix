@@ -11,7 +11,6 @@ in {
 
 	# TODO: wallpaper git sync
 
-
 	xresources.properties = {
 		"Xcursor.size" = 36;
 		"Xft.dpi" = 96;
@@ -25,7 +24,6 @@ in {
 		x11.defaultCursor  = "BreezeX-RosePine-Linux";	
 		size = 36;
 	};	
-	
 	
 	wayland.windowManager.hyprland = {
 		enable = true;
@@ -242,12 +240,12 @@ in {
 			
 			device { 
 				name = razer-razer-basilisk-v3-pro-mouse
-				sensitivity = -0.8
+				sensitivity = -0.7
 			}
 
 			device { 
 				name = razer-razer-basilisk-v3-pro-1
-				sensitivity = -0.8
+				sensitivity = -0.7
 			}
 
 			device { 
