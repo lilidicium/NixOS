@@ -25,10 +25,6 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		textfox = {
-			url = "github:adriankarlen/textfox";
-		};
-
 		caelestia-shell = {
 			url = "github:caelestia-dots/shell";
 			inputs.nixpkgs.follows = "nixpkgs";

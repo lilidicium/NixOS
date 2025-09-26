@@ -1,39 +1,10 @@
 { config, pkgs, lib, inputs, specialArgs, ... }:
 
-let
-  # Define the overlay for material-symbols
-  material-symbols-overlay = final: prev: {
-    material-symbols = prev.material-symbols.overrideAttrs (oldAttrs: {
-      src = prev.fetchFromGitHub {
-        owner = "google";
-        repo = "material-design-icons";
-        rev = "941fa95d7f6084a599a54ca71bc565f48e7c6d9e";  # Your newer commit hash
-        sha256 = "sha256-5bcEh7Oetd2JmFEPCcoweDrLGQTpcuaCU8hCjz8ls3M=";  # Your hash
-        sparseCheckout = [ "variablefont" ];  # Matches original derivation
-      };
-
-      # Ensure rename is available
-      nativeBuildInputs = oldAttrs.nativeBuildInputs or [] ++ [ prev.rename ];
-      
-      # Match the original installPhase, including rename
-      installPhase = ''
-        runHook preInstall
-        rename 's/\[FILL,GRAD,opsz,wght\]//g' variablefont/*
-        install -Dm755 variablefont/*.ttf -t $out/share/fonts/TTF
-        install -Dm755 variablefont/*.woff2 -t $out/share/fonts/woff2
-        runHook postInstall
-      '';
-    });
-  };
-in
 {
-  # Apply the provided overlay to override material-symbols
-  nixpkgs.overlays = [ material-symbols-overlay ];
 
 	imports = [
 		./modules/home/default.nix
 		inputs.zen-browser.homeModules.default
-		inputs.textfox.homeManagerModules.default
 	];
 
           
@@ -74,23 +45,38 @@ in
 		man
 		tldr
 		tree
-		iwd
 
 		# terminal apps
 		btop
 		fastfetch
+		iwd
 
+		# graphical apps
 		vesktop
 		nemo
-		
+		pavucontrol
+		libreoffice
+		vscode
+
+		# launcher
 		nwg-launchers
 
+		# usb utils
+		ventoy-full-gtk
 		woeusb-ng
 		ntfs3g
 
+		# hyprland ecosystem
 		pyprland
 		hyprcursor
 		hyprshot
+
+		# misc
+		renpy
+
+		# shell
+		inputs.caelestia-shell.packages."${pkgs.system}".default
+		inputs.caelestia-cli.packages."${pkgs.system}".default
 
 		# ===== dependencies
 		# brightnessctl
@@ -106,18 +92,6 @@ in
 		# wl-clipboard-rs
 		# playerctl
 		# ddcutil
-
-		ventoy-full-gtk
-		
-		pavucontrol
-
-		libreoffice
-		renpy
-
-		vscode
-
-		inputs.caelestia-shell.packages."${pkgs.system}".default
-		inputs.caelestia-cli.packages."${pkgs.system}".default
 
 	];
 
