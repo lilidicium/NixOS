@@ -1,8 +1,15 @@
 { host, ... }: let
-
 in {
-	imports = 
-	[
-		./system.nix
-	];
+
+imports = [
+	./bluetooth.nix
+	./boot.nix
+	./environmentvariables.nix
+	./network.nix
+	./packages.nix
+	./power.nix
+	./system.nix
+	./user.nix
+];
+
 }

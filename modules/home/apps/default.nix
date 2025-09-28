@@ -1,12 +1,12 @@
 { host, ... }: let
-
 in {
-    imports = 
-    [
-      ./hyprland.nix
-      ./stylix.nix
-      ./bash.nix
-      ./zen.nix
-      ./alacritty.nix
-    ];
+
+imports = [
+  ./alacritty.nix
+  ./bash.nix
+  ./hyprland.nix
+  ./stylix.nix
+  ./zen.nix
+];
+
 }

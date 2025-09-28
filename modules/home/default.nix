@@ -1,10 +1,10 @@
 { host, ... }: let
-
 in {
-	imports = 
-	[
-		./apps
-		./packages.nix
-		./user.nix
-	];
+
+imports = [
+	./apps
+	./packages.nix
+	./user.nix
+];
+
 }

@@ -63,6 +63,7 @@ in {
 				"SUPER, A, exec, nwggrid -client"
 				"SUPER, D, exec, nwgdmenu"
 				"SUPER, T, exec, alacritty"
+				"SUPER SHIFT, T, exec, [float; center; size 400 400] alacritty"
 				"SUPER, B, exec, zen"
 				"SUPER, V, exec, vesktop"
 				
@@ -119,6 +120,7 @@ in {
 			windowrule = [
 				"suppressevent maximize, class:.*"
 				"nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+				"float, pin, class:sysmenu, HDMI-A-1"
 			];
 
 			animation = [
@@ -237,6 +239,7 @@ in {
 		extraConfig = ''
 		
 			monitor = eDP-1, preferred, auto, 1
+			monitor = HDMI-A-1, 2560x1440@144, auto, 1
 			
 			device { 
 				name = razer-razer-basilisk-v3-pro-mouse
@@ -254,8 +257,6 @@ in {
 			}
 						
 		'';
-		# ${extraMonitorSettings}
-		# layerrule = blur, waybar
-		# (uncomment and put inside quotes to use)
+
 	};
 }
