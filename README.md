@@ -10,7 +10,7 @@ I can use to share my entire system config with others.
 > experts when I need help with something. Feel free to copy from this repo if
 > you want (I'm trying to make it as readable as possible!), but I discourage
 > you from Using This Config.
-
+------
 + **What's new:**
   - split home.nix and configuration.nix into modules, 
     located at `/modules/home` and `/modules/system`
