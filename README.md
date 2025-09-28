@@ -25,7 +25,7 @@ I can use to share my entire system config with others.
   - implementing kmonad because my thinkpad doesn't have qmk
 
 ------
-
+|               | Wayland                 |
 |---------------|-------------------------|
 | **Shell:**    | [caelestia][caelestia]  |
 | **WM:**       | hyprland                |
