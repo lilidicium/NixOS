@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:{
+{ config, inputs, ... }:{
 
 imports = [ inputs.zen-browser.homeModules.default ];
 

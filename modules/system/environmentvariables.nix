@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:{
+{ config, ... }:{
 
 environment.variables = {
   MOZ_ENABLED_WAYLAND = 1; # tells firefox to use wayland

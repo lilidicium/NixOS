@@ -1,90 +1,57 @@
 {
-	description = "Maggie's NixOS config";
+description = "Maggie's NixOS config";
 
-	inputs = {
+inputs = {
+
+	nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+
+	home-manager = {
+	url = "github:nix-community/home-manager/release-25.05";
+	inputs.nixpkgs.follows = "nixpkgs";};
 	
-		# NixOS official package source, using the nixos-25.05 branch here
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-		
-		zen-browser = {
-			url = "github:/0xc000022070/zen-browser-flake";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+	zen-browser = {
+		url = "github:/0xc000022070/zen-browser-flake";
+		inputs.nixpkgs.follows = "nixpkgs";};
 
-		nurpkgs = {
-		    url = "github:nix-community/NUR";
-		};
+	stylix = {
+		url = "github:nix-community/stylix/release-25.05";
+		inputs.nixpkgs.follows = "nixpkgs";};
 
-		rycee-nurpkgs = {
-		  url = gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons;
-		  inputs.nixpkgs.follows = "nixpkgs";
-		};
+	caelestia-shell = {
+		url = "github:caelestia-dots/shell";
+		inputs.nixpkgs.follows = "nixpkgs";};
 
-		stylix = {
-			url = "github:nix-community/stylix/release-25.05";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		caelestia-shell = {
-			url = "github:caelestia-dots/shell";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		caelestia-cli = {
-			url = "github:caelestia-dots/cli";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-#		caelestia = {
-#			url = "github:caelestia-dots/caelestia";
-#		};
-		
-		# home-manager, used for managing user configuration
-		home-manager = {
-			url = "github:nix-community/home-manager/release-25.05";
-			# the `follows` keyword in inputs is used for inheritance.
-			# here, `inputs.nixpkg` of home-manager is kept consistent with
-			# the `inputs.nixpkg` of the current flake, to avoid
-			# problems caused by different versions of nixpkgs.
-			inputs.nixpkgs.follows = "nixpkgs";
-			
-		};
-	};
+	caelestia-cli = {
+		url = "github:caelestia-dots/cli";
+		inputs.nixpkgs.follows = "nixpkgs";};
+};
 	
-#@{ nixpkgs, stylix, home-manager, zen-browser, ... }
+outputs = inputs@{ nixpkgs, stylix, home-manager, zen-browser, ... }: {
 
-	outputs = inputs@{ nixpkgs, stylix, home-manager, zen-browser, ... }: {
-
-		nixosConfigurations = {
-			nixos = nixpkgs.lib.nixosSystem {
-				system = "x86_64-linux";
-				specialArgs = { inherit inputs; };
-				modules = [
-					# Import configuration.nix
-					./configuration.nix
-
-					stylix.nixosModules.stylix
+	nixosConfigurations = {
+		nixos = nixpkgs.lib.nixosSystem {
+			system = "x86_64-linux";
+			specialArgs = { inherit inputs; };
+			modules = [
+				./configuration.nix
+				stylix.nixosModules.stylix
+				home-manager.nixosModules.home-manager {
+					home-manager.useGlobalPkgs = true;
+					home-manager.useUserPackages = true;
+					home-manager.users.maggie = {
+						imports = [
+							./home.nix
+						];
+					};
 					
-					# make home-manager a module of nixos
-					# so that home-manager will be deployed
-					# automatically when executing `nixos-rebuild switch`
-					home-manager.nixosModules.home-manager {
-						home-manager.useGlobalPkgs = true;
-					 	home-manager.useUserPackages = true;
-					 	home-manager.users.maggie = {
-					 		imports = [
-					 			./home.nix
-					 		];
-					 };
-#					 extraArgs = {
-#					 	addons = pkgs.nur.repos.rycee.firefox-addons;
-#					 };
-					 home-manager.extraSpecialArgs = {
-					 	inherit inputs;
-				   	 };
-					 # optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
-					}
-				];
-			};
-		};	
-	};
+					home-manager.extraSpecialArgs = {
+					inherit inputs;
+						};
+					# optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+				}
+			];
+		};
+	};	
+};
+
 }

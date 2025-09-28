@@ -1,4 +1,4 @@
-{ host, config, pkgs, ... }:let
+{ config, pkgs, ... }:let
 
 in {
 	home.packages = with pkgs; [
