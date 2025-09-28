@@ -4,6 +4,13 @@ I decided to document my NixOS journey by making this repo public. I'm keeping i
 mostly for version control and backups, but it's also nice to have a link that
 I can use to share my entire system config with others.
 
+> [!IMPORTANT]
+> **Disclaimer:** _I do not intend anyone but myself to use this configuration._
+> I have this repo for version control purposes, and so I can send it to Nix
+> experts when I need help with something. Feel free to copy from this repo if
+> you want (I'm trying to make it as readable as possible!), but I discourage
+> you from Using This Config.
+
 + **What's new:**
   - split home.nix and configuration.nix into modules, 
     located at `/modules/home` and `/modules/system`
@@ -16,13 +23,6 @@ I can use to share my entire system config with others.
   - swapping out the nwg launchers for sysmenu
   - figuring out how to implement non-.nix configuration files
   - implementing kmonad because my thinkpad doesn't have qmk
-
-> [!IMPORTANT]
-> **Disclaimer:** _I do not intend anyone but myself to use this configuration._
-> I have this repo for version control purposes, and so I can send it to Nix
-> experts when I need help with something. Feel free to copy from this repo if
-> you want (I'm trying to make it as readable as possible!), but I discourage
-> you from Using This Config.
 
 ------
 
