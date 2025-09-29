@@ -12,17 +12,19 @@ I can use to share my entire system config with others.
 > you from Using This Config.
 ------
 + **What's new:**
+  - swapped out nwg-launchers for sysmenu
+  - added greetd & tui-greet
   - split home.nix and configuration.nix into modules, 
     located at `/modules/home` and `/modules/system`
-  - homogenized formatting and improved readability by 
-    adding (and removing) comments
+  - started implementing non-.nix dotfile management
+
 
 + **What I'm working on:**
   - modularizing hyprland.nix
   - cleaning up flake.nix
-  - swapping out the nwg launchers for sysmenu
-  - figuring out how to implement non-.nix configuration files
   - implementing kmonad because my thinkpad doesn't have qmk
+  - [formatting] my repo
+  - fully modularizing my config with [custom home-manager modules]
 
 ------
 |               | Wayland                 |
@@ -75,3 +77,6 @@ I can use to share my entire system config with others.
 [zaneyos]: https://gitlab.com/Zaney/zaneyos
 [guide]: https://nixos-and-flakes.thiscute.world/
 [discord]: https://discord.gg/JnZNJy9BPk
+
+[formatting]: https://nix.dev/manual/nix/2.18/command-ref/new-cli/nix3-fmt
+[custom home-manager modules]: https://wiki.nixos.org/wiki/NixOS_modules
