@@ -44,13 +44,11 @@ in {
 
 				"caelestia shell"
 				"hyprctl setcursor rose-pine-hyprcursor 36"
-				"nwggrid-server"
 				
-				"nix-env --delete-generations 14d"
-				"nix-store --gc"
-				
-				#"killall -q waybar; sleep .5 && waybar"
-				#"killall -q swaync;sleep .5 && swaync"
+				"sudo nix-collect-garbage --delete-older-than 7d"
+				"sudo rm /nix/var/nix/gcroots/auto/*"
+				"sudo nix-store --optimise"
+
 			];
 
 			bindr = [
@@ -60,12 +58,13 @@ in {
 			bind = [
 
 				# Summon
-				"SUPER, A, exec, nwggrid -client"
-				"SUPER, D, exec, nwgdmenu"
+				"SUPER, A, exec, sysmenu"
 				"SUPER, T, exec, alacritty"
 				"SUPER SHIFT, T, exec, [float; center; size 400 400] alacritty"
 				"SUPER, B, exec, zen"
-				"SUPER, V, exec, vesktop"
+				"SUPER, D, exec, vesktop"
+				"SUPER, C, exec, code"
+				"SUPER, F, exec, dolphin"
 				
 				# Window
 				"SUPER, Q, killactive"
@@ -120,7 +119,7 @@ in {
 			windowrule = [
 				"suppressevent maximize, class:.*"
 				"nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-				"float, pin, class:sysmenu, HDMI-A-1"
+				"float, pin, stayfocused, title:sysmenu, HDMI-A-1"
 			];
 
 			animation = [

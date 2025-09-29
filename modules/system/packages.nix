@@ -5,6 +5,9 @@ environment.systemPackages = with pkgs; [
   git
   wget
   micro
+
+  greetd.tuigreet
+  
   hyprnome # wouldn't work in home.nix for some reason
 ];
 

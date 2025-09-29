@@ -20,13 +20,14 @@ home.packages = with pkgs; [
 
 	# graphical apps
 	vesktop
-	nemo
+	kdePackages.dolphin
 	pavucontrol
 	libreoffice
 	vscode
+	obsidian
+	godot
 
 	# launchers
-	nwg-launchers
 	sysmenu
 
 	# usb utils
