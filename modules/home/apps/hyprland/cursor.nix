@@ -14,12 +14,15 @@
   };
 
   wayland.windowManager.hyprland.settings = {
+    general = {
+    }; 
     cursor = {
       sync_gsettings_theme = true;
       no_hardware_cursors = 2; # 1 for off
       enable_hyprcursor = true;
       warp_on_change_workspace = 2;
       no_warps = true;
+      winactive_timeout = 1; # seconds
     };
   };
 

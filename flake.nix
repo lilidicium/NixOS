@@ -31,7 +31,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, stylix, home-manager, zen-browser, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, stylix, zen-browser, ... }: {
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
@@ -55,7 +55,6 @@
             home-manager.extraSpecialArgs = {
               inherit inputs;
             };
-            # optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
         ];
       };
