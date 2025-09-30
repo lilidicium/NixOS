@@ -1,10 +1,10 @@
-{ config, ... }:{
+{ config, ... }: {
 
-boot.loader = {
+  boot.loader = {
     systemd-boot = {
-        enable = true;
+      enable = true;
     };
     efi.canTouchEfiVariables = true;
-};
+  };
 
 }

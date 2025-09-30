@@ -1,8 +1,9 @@
-{ host, ... }: let
+{ host, ... }:
+let
 in {
 
-imports = [
-./dotfiles.nix
-];
+  imports = [
+    ./dotfiles.nix
+  ];
 
 }

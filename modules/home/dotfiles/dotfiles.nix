@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:{
+{ config, pkgs, ... }: {
 
-home.file = {
-  ".config/hypr/pyprland.toml" = {
-    source = ./pyprland/pyprland.toml;
+  home.file = {
+    ".config/hypr/pyprland.toml" = {
+      source = ./pyprland/pyprland.toml;
+    };
   };
-};
 
-} 
+}
