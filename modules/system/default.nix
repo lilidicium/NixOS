@@ -9,6 +9,7 @@ imports = [
 	./network.nix
 	./packages.nix
 	./power.nix
+	./stylix.nix
 	./system.nix
 	./user.nix
 ];
