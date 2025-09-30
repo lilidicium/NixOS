@@ -5,7 +5,7 @@ in {
   imports = [
     ./alacritty.nix
     ./bash.nix
-    ./hyprland.nix
+    ./hyprland
     ./zen.nix
   ];
 
