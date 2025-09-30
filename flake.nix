@@ -28,6 +28,8 @@ inputs = {
 	
 outputs = inputs@{ nixpkgs, stylix, home-manager, zen-browser, ... }: {
 
+	formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+
 	nixosConfigurations = {
 		nixos = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
