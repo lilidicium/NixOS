@@ -6,6 +6,7 @@ in {
     ./alacritty.nix
     ./bash.nix
     ./hyprland
+    ./vscode.nix
     ./zen.nix
   ];
 

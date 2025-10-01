@@ -23,7 +23,6 @@
     kdePackages.dolphin
     pavucontrol
     libreoffice
-    vscode
     obsidian
     godot
 
@@ -63,11 +62,6 @@
       enable = true;
       settings = { };
     };
-
-    vscode = {
-      enable = true;
-    };
-
   };
 
 }

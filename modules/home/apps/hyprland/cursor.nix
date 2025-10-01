@@ -22,7 +22,7 @@
       enable_hyprcursor = true;
       warp_on_change_workspace = 2;
       no_warps = true;
-      winactive_timeout = 1; # seconds
+      inactive_timeout = 1; # seconds
     };
   };
 
