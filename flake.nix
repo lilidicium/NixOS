@@ -31,10 +31,10 @@
       url = "github:caelestia-dots/cli";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    # millennium = {
-    #   url = "github:SteamClientHomebrew/Millennium/next?submodules=1";
-    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
-    # };
+    millennium = {
+      url = "github:SteamClientHomebrew/Millennium/next?submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, stylix, zen-browser, millennium, ... }: {
