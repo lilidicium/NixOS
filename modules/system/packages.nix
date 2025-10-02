@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, nixpkgs, inputs, ... }: {
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
@@ -19,6 +19,7 @@
 
     steam = {
       enable = true;
+      package = pkgs.steam-millennium;
     };
 
     appimage = {
@@ -30,6 +31,10 @@
 
   nixpkgs.config.permittedInsecurePackages = [
     "ventoy-gtk3-1.1.05"
+  ];
+
+  nixpkgs.overlays = [
+    inputs.millennium.overlays.default
   ];
 
 }

@@ -8,7 +8,7 @@
       "SUPER SHIFT, T, exec, [float; center; size 400 400] alacritty"
       "SUPER, B, exec, zen"
       "SUPER, D, exec, vesktop"
-      "SUPER, C, exec, code"
+      "SUPER, C, exec, codium"
       "SUPER, F, exec, dolphin"
 
       # Window

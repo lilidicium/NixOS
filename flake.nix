@@ -4,6 +4,8 @@
   inputs = {
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -22,16 +24,20 @@
 
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     caelestia-cli = {
       url = "github:caelestia-dots/cli";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    # millennium = {
+    #   url = "github:SteamClientHomebrew/Millennium/next?submodules=1";
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, stylix, zen-browser, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, stylix, zen-browser, millennium, ... }: {
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 

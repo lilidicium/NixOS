@@ -15,8 +15,9 @@
 
     # terminal apps
     btop
-    fastfetch
     iwd
+    scdl
+    ffmpeg
 
     # graphical apps
     vesktop
@@ -25,6 +26,7 @@
     libreoffice
     obsidian
     godot
+    amberol
 
     # launchers
     sysmenu
