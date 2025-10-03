@@ -21,7 +21,7 @@
 
     # graphical apps
     vesktop
-    kdePackages.dolphin
+    thunar
     pavucontrol
     libreoffice
     obsidian

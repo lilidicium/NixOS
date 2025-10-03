@@ -19,7 +19,7 @@
 
     steam = {
       enable = true;
-      package = pkgs.steam-millennium;
+      # package = pkgs.steam-millennium;
     };
 
     appimage = {
