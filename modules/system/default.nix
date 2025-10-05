@@ -3,6 +3,7 @@ let
 in {
 
   imports = [
+    ./audio.nix
     ./bluetooth.nix
     ./boot.nix
     ./environmentvariables.nix

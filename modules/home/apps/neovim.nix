@@ -8,7 +8,8 @@
       vim = {
         theme.enable = true;
         theme.name = lib.mkForce "catppuccin";
-        theme.transparent = true;
+        theme.style = lib.mkForce "macchiato";
+        theme.transparent = lib.mkForce true;
 
         statusline.lualine.enable = true;
         telescope.enable = true;

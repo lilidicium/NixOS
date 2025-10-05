@@ -27,6 +27,7 @@
     godot
     renoise
     obs-studio
+    qjackctl
 
     # launchers
     sysmenu
