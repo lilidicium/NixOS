@@ -8,6 +8,7 @@
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
       window.padding = { x = 20; y = 20; };
+      window.opacity = lib.mkForce 0.7;
     };
   };
 

@@ -8,8 +8,11 @@
       "SUPER SHIFT, T, exec, [float; center; size 400 400] alacritty"
       "SUPER, B, exec, zen"
       "SUPER, D, exec, vesktop"
-      "SUPER, C, exec, code"
+      "SUPER, C, exec, nvim"
       "SUPER, F, exec, dolphin"
+
+      # Scratchpad
+      "SUPER, grave, exec, pypr toggle term"
 
       # Window
       "SUPER, Q, killactive"
@@ -17,10 +20,10 @@
       "SUPER SHIFT, F, fullscreen"
 
       # Focus
-      "SUPER, left, movefocus, l"
-      "SUPER, right, movefocus, r"
-      "SUPER, up, movefocus, u"
-      "SUPER, down, movefocus, d"
+      "SUPER, h, movefocus, l"
+      "SUPER, l, movefocus, r"
+      "SUPER, k, movefocus, u"
+      "SUPER, j, movefocus, d"
 
       # Compositor
       "SUPER, M, exit"
@@ -34,12 +37,17 @@
 
       # Screenshot
       " , PRINT, exec, hyprshot -m region"
-      "SUPER, PRINT, exec, hyprshot -m window"
+      "SHIFT, PRINT, exec, hyprpicker -r"
+      "SHIFT, PRINT, exec, hyprshot -m region"
     ];
     bindel = [
       # Volume & Brightness Controls
       ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
       ",XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
+
+      "SHIFT, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+"
+      "SHIFT, XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%-"
+
       ",XF86AudioMute, exec, wpctl set-mute 1 @DEFAULT_AUDIO_SINK@ toggle"
       ",XF86AudioMicMute, exec, wpctl set-mute 1 @DEFAULT_AUDIO_SOURCE@ toggle"
       ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"

@@ -31,9 +31,19 @@
       url = "github:caelestia-dots/cli";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    musnix = {
+      url = "github:musnix/musnix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, stylix, zen-browser, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, stylix, zen-browser, nvf, ... }: {
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
@@ -45,6 +55,7 @@
           ./configuration.nix
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
+          inputs.musnix.nixosModules.musnix
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

@@ -10,8 +10,8 @@
     shellAliases = {
       pls = "sudo";
       please = "sudo $(history -p !!)";
-      rebuild = "git stage . && sudo nixos-rebuild switch --impure";
-      test = "git stage . && sudo nixos-rebuild test";
+      rb = "sudo nixos-rebuild switch --impure";
+      rbtest = "sudo nixos-rebuild test";
     };
   };
 

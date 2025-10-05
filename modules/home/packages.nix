@@ -25,6 +25,8 @@
     libreoffice
     obsidian
     godot
+    renoise
+    obs-studio
 
     # launchers
     sysmenu
@@ -38,6 +40,7 @@
     pyprland
     hyprcursor
     hyprshot
+    hyprpicker
 
     # misc
     renpy

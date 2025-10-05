@@ -1,2 +1,12 @@
 [pyprland]
-plugins = ["scratchpads"]
+plugins = [
+"scratchpads",
+"lost_windows",
+]
+
+[scratchpads.term]
+animation = "fromRight"
+command = "alacritty"
+class = "main-dropterm"
+size = "75% 60%"
+max_size = "90%"
