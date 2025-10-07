@@ -12,6 +12,7 @@
     man
     tldr
     tree
+    unzip
 
     # terminal apps
     btop

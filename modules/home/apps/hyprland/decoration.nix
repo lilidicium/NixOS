@@ -10,10 +10,10 @@
     decoration = {
       rounding = 18;
       blur = {
-        enabled = false;
+        enabled = true;
         size = 5;
         passes = 3;
-        ignore_opacity = false;
+        ignore_opacity = true;
         new_optimizations = true;
       };
       shadow = {
