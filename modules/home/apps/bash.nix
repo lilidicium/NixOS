@@ -12,6 +12,7 @@
       please = "sudo $(history -p !!)";
       rb = "sudo nixos-rebuild switch --impure";
       rbtest = "sudo nixos-rebuild test";
+      cleanup = "sudo rm /nix/var/nix/gcroots/auto/* && sudo nix-collect-garbage -d && sudo nix-store --optimise";
     };
   };
 

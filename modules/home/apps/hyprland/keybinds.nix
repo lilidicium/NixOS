@@ -5,14 +5,17 @@
       # Summon
       "SUPER, A, exec, sysmenu"
       "SUPER, T, exec, alacritty"
-      "SUPER SHIFT, T, exec, [float; center; size 400 400] alacritty"
       "SUPER, B, exec, zen"
-      "SUPER, D, exec, vesktop"
       "SUPER, C, exec, nvim"
       "SUPER, F, exec, dolphin"
 
-      # Scratchpad
+      # Banish
+      "SUPER, X, togglespecialworkspace, banished"
+
+      # Dropdown
       "SUPER, grave, exec, pypr toggle term"
+      "SUPER, D, exec, togglespecialworkspace, discord"
+      "SUPER, Z, exec, togglespecialworkspace, zen"
 
       # Window
       "SUPER, Q, killactive"
@@ -27,18 +30,26 @@
 
       # Compositor
       "SUPER, M, exit"
-      "SUPER ALT SHIFT, C, exec, caelestia shell"
 
-      # Workspace (hyprnome)
+      # Reinitialize TODO: FIX
+      "SUPER ALT SHIFT, C, exec, killall -KILL .pypr-wrapped"
+      "SUPER ALT SHIFT, C, exec, killall -KILL .quickshell-wrapped"
+      "SUPER ALT SHIFT, C, exec, caelestia shell; pypr; hyprctl reload"
+
+      # Workspaces
       "SUPER, 1, exec, hyprnome --previous"
       "SUPER, 2, exec, hyprnome"
       "SUPER_SHIFT, 1, exec, hyprnome --previous --move"
       "SUPER_SHIFT, 2, exec, hyprnome --move"
+      "SUPER SHIFT, X, movetoworkspace, special:banished"
 
       # Screenshot
       " , PRINT, exec, hyprshot -m region"
       "SHIFT, PRINT, exec, hyprpicker -r"
       "SHIFT, PRINT, exec, hyprshot -m region"
+      "SUPER, PRINT, exec, hyprshot -m window"
+      "SUPER  SHIFT, PRINT, exec, hyprpicker -m region"
+      "SUPER  SHIFT, PRINT, exec, hyprshot -m window"
     ];
     bindel = [
       # Volume & Brightness Controls

@@ -12,19 +12,13 @@ I can use to share my entire system config with others.
 > you from Using This Config.
 ------
 + **What's new:**
-  - swapped out nwg-launchers for sysmenu
-  - added greetd & tui-greet
-  - split home.nix and configuration.nix into modules, 
-    located at `/modules/home` and `/modules/system`
-  - started implementing non-.nix dotfile management
-
+  - added nvim, removed vscode
+  - various changes
 
 + **What I'm working on:**
-  - modularizing hyprland.nix
-  - cleaning up flake.nix
   - implementing kmonad because my thinkpad doesn't have qmk
-  - [formatting] my repo
   - fully modularizing my config with [custom home-manager modules]
+  - cleaning up stuff i don't use (not pretentious enough to call it 'bloat', ehehe)
 
 ------
 |               | Wayland                 |

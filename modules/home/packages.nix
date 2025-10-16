@@ -10,14 +10,17 @@
 
     # terminal tools
     man
-    tldr
     tree
-    unzip
 
     # terminal apps
     btop
     fastfetch
     iwd
+
+    # compilers
+    rustup
+    ghc
+    gcc
 
     # graphical apps
     vesktop
@@ -28,7 +31,6 @@
     godot
     renoise
     obs-studio
-    qjackctl
 
     # launchers
     sysmenu
@@ -45,7 +47,6 @@
     hyprpicker
 
     # misc
-    renpy
     brightnessctl
     playerctl
 

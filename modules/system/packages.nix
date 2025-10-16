@@ -4,7 +4,6 @@
   environment.systemPackages = with pkgs; [
     git
     wget
-    micro
 
     greetd.tuigreet
 

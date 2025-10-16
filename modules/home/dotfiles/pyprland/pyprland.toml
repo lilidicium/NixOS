@@ -6,7 +6,7 @@ plugins = [
 
 [scratchpads.term]
 animation = "fromRight"
-command = "alacritty"
-class = "main-dropterm"
-size = "75% 60%"
-max_size = "90%"
+command = "alacritty --class dropterm"
+class = "dropterm"
+size = "50% 95%"
+max_size = "1920px 100%"

@@ -5,5 +5,4 @@
       source = ./pyprland/pyprland.toml;
     };
   };
-
 }
