@@ -7,6 +7,7 @@ in {
     ./dotfiles
     ./packages.nix
     ./user.nix
+    ./niri
   ];
 
 }

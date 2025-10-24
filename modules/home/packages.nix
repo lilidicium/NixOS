@@ -21,6 +21,7 @@
     rustup
     ghc
     gcc
+    python3
 
     # graphical apps
     vesktop
@@ -49,12 +50,17 @@
     # misc
     brightnessctl
     playerctl
+    wl-clipboard
 
     # shell
     inputs.caelestia-shell.packages."${pkgs.system}".default
     inputs.caelestia-cli.packages."${pkgs.system}".default
 
-  ];
+    # manix
+      renpy
+      kmonad
+
+];
 
   programs = {
 
@@ -65,7 +71,7 @@
     };
 
     starship = {
-      enable = true;
+      enable = false;
       settings = { };
     };
   };

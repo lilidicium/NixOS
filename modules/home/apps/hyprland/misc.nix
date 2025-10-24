@@ -20,4 +20,10 @@
       disable_logs = false;
     };
   };
+
+  wayland.windowManager.hyprland.settings = {
+  extraConfig = ''
+    exec = hyprctl dispatch submap global
+    submap = global
+  ''
 }

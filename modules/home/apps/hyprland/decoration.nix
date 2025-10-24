@@ -15,11 +15,12 @@
         passes = 3;
         ignore_opacity = true;
         new_optimizations = true;
+        xray = true;
       };
       shadow = {
-        enabled = false;
+        enabled = true;
         range = 4;
-        render_power = 3;
+        render_power = 2;
       };
     };
   };

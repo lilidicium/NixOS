@@ -1,9 +1,24 @@
 { config, pkgs, ... }:{
 
   wayland.windowManager.hyprland.settings = {
+
+    bindi = [
+    ];
+    bindin = [
+      "SUPER, mouse:272, global, caelestia:launcherInterrupt"
+      "SUPER, mouse:273, global, caelestia:launcherInterrupt" 
+      "SUPER, mouse:274, global, caelestia:launcherInterrupt"
+      "SUPER, mouse:275, global, caelestia:launcherInterrupt" 
+      "SUPER, mouse:276, global, caelestia:launcherInterrupt"
+      "SUPER, mouse:277, global, caelestia:launcherInterrupt"
+      "SUPER, mouse_up, global, caelestia:launcherInterrupt"
+      "SUPER, mouse_down, global, caelestia:launcherInterrupt"
+    ];
     bind = [
+
+      "SUPER, A, global, caelestia:launcher"
+
       # Summon
-      "SUPER, A, exec, sysmenu"
       "SUPER, T, exec, alacritty"
       "SUPER, B, exec, zen"
       "SUPER, C, exec, nvim"
@@ -30,6 +45,7 @@
 
       # Compositor
       "SUPER, M, exit"
+      "SUPER, Esc, global, caelestia:session"
 
       # Reinitialize TODO: FIX
       "SUPER ALT SHIFT, C, exec, killall -KILL .pypr-wrapped"
