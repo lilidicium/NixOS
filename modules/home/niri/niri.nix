@@ -1,7 +1,5 @@
 { config, pkgs, ... }:{
 
-  programs.niri.enable = true;
-
-  home.file.".config/niri/niri.kdl" = { source = ./niri.kdl };
+  home.file.".config/niri/config.kdl" = { source = ./niri.kdl; };
 
 }

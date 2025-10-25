@@ -32,6 +32,17 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    quickshell = {
+      url = "github:outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";  # Use same quickshell version
+    };
+
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -40,6 +51,10 @@
     musnix = {
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    nix-doom-emacs-unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
     };
   };
 
@@ -56,6 +71,7 @@
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           inputs.musnix.nixosModules.musnix
+          inputs.nix-doom-emacs-unstraightened.homeModule
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

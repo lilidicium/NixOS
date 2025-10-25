@@ -7,6 +7,7 @@ in {
     ./bash.nix
     ./hyprland
     ./neovim
+    ./noctalia.nix
     ./zen.nix
   ];
 

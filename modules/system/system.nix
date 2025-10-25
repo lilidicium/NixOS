@@ -1,4 +1,8 @@
-{ config, ... }: {
+{ config, pkgs, inputs, lib, ... }: {
+
+  imports = [
+    inputs.noctalia.nixosModules.default
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -9,6 +13,7 @@
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+  services.noctalia-shell.enable = true;
 
   time.timeZone = "America/New_York";
 

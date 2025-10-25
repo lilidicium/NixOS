@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
@@ -7,10 +7,14 @@
 
     greetd.tuigreet
 
+    inputs.noctalia.packages.${system}.default
+
     hyprnome # wouldn't work in home.nix for some reason
   ];
 
   programs = {
+
+    niri.enable = true;
 
     hyprland = {
       enable = true;

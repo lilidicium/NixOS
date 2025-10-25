@@ -32,9 +32,12 @@
     godot
     renoise
     obs-studio
+    emacs
+    wezterm
 
     # launchers
     sysmenu
+    fuzzel
 
     # usb utils
     ventoy-full-gtk
@@ -51,6 +54,8 @@
     brightnessctl
     playerctl
     wl-clipboard
+    xwayland-satellite
+    preload
 
     # shell
     inputs.caelestia-shell.packages."${pkgs.system}".default
@@ -74,6 +79,8 @@
       enable = false;
       settings = { };
     };
+
+    doom-emacs.enable = true;
   };
 
 }

@@ -3,7 +3,7 @@ let
 in {
 
   imports = [
-    ./niri
+    ./niri.nix
   ];
 
 }
