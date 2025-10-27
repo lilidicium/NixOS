@@ -53,14 +53,21 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    nix-doom-emacs-unstraightened = {
-      url = "github:marienz/nix-doom-emacs-unstraightened";
-    };
+    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
+    nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
   };
 
   outputs = inputs@{ nixpkgs, home-manager, stylix, zen-browser, nvf, ... }: {
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+    
+    homeConfigurations.maggie = home-manager.lib.homeManagerConfiguration {
+      modules = [
+        inputs.nix-doom-emacs-unstraightened.homeModule
+        ./home.nix
+      ];
+      extraSpecialArgs = { inherit inputs; };
+    };
 
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -71,13 +78,13 @@
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           inputs.musnix.nixosModules.musnix
-          inputs.nix-doom-emacs-unstraightened.homeModule
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.maggie = {
               imports = [
                 ./home.nix
+                inputs.nix-doom-emacs-unstraightened.homeModule
               ];
             };
             home-manager.extraSpecialArgs = {

@@ -16,19 +16,25 @@ I can use to share my entire system config with others.
   - various changes
 
 + **What I'm working on:**
-  - implementing kmonad because my thinkpad doesn't have qmk
-  - fully modularizing my config with [custom home-manager modules]
-  - cleaning up stuff i don't use (not pretentious enough to call it 'bloat', ehehe)
-
+  [ ] removing hyprland and caelestia
+  [ ] re-re-re-re-re-refactoring
+  [ ] writing markdown cheat sheets for all my apps
+  [ ] implementing kmonad because my thinkpad doesn't have qmk
+  [ ] fully modularizing my config with [custom home-manager modules]
+  [ ] adding matugen/pywal support to every application
+  [ ] making my config completely keyboard-navigable
+  [ ] adding vim mode to every application, including the terminal
+  [ ] making a 'tty mode' that can be booted into to save battery
+  
 ------
 |               | Wayland                 |
 |---------------|-------------------------|
-| **Shell:**    | [caelestia][caelestia]  |
-| **WM:**       | hyprland                |
-| **Editor:**   | micro & vscode          |
-| **Terminal:** | alacritty               |
-| **Launcher:** | nwg-launcher            |
-| **Browser:**  | [zen][zen]              |
+| **Shell:**    | noctalia                |
+| **WM:**       | niri                    |
+| **Editor:**   | nvim & doom-emacs       |
+| **Terminal:** | wezterm                 |
+| **Launcher:** | fuzzel                  |
+| **Browser:**  | firefox                 |
 
 -----
 

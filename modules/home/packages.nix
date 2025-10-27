@@ -11,11 +11,12 @@
     # terminal tools
     man
     tree
+    tldr
 
     # terminal apps
     btop
-    fastfetch
     iwd
+    nerdfetch
 
     # compilers
     rustup
@@ -27,17 +28,12 @@
     vesktop
     kdePackages.dolphin
     pavucontrol
-    libreoffice
     obsidian
     godot
-    renoise
-    obs-studio
-    emacs
-    wezterm
+    ghostty
 
     # launchers
     sysmenu
-    fuzzel
 
     # usb utils
     ventoy-full-gtk
@@ -55,7 +51,8 @@
     playerctl
     wl-clipboard
     xwayland-satellite
-    preload
+    pywalfox-native
+    ripgrep
 
     # shell
     inputs.caelestia-shell.packages."${pkgs.system}".default
@@ -79,8 +76,11 @@
       enable = false;
       settings = { };
     };
-
-    doom-emacs.enable = true;
+    
+    doom-emacs = {
+      enable = true;
+      doomDir = ./apps/emacs/doom;
+    };
   };
 
 }

@@ -3,9 +3,7 @@ let
 in {
 
   imports = [
-    ./bash.nix
-    ./neovim
-    ./firefox
+    ./firefox.nix
   ];
 
 }
