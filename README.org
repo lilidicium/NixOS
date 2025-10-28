@@ -1,7 +1,7 @@
 #+title: Readme
 #+author: mag$ / lilidicium
 
-[[[[https://img.shields.io/badge/NixOS-24.05-blue.svg?style=flat-square&logo=NixOS&logoColor=white]]][https://nixos.org]]
+[[https://img.shields.io/badge/NixOS-24.05-blue.svg?style=flat-square&logo=NixOS&logoColor=white]]
 
 * Welcome to my repo!
 I decided to publish my NixOS journey by making this repo public.
@@ -13,14 +13,14 @@ I use this repo for version control, backups, and sharing with others!
 
 * What I'm up to:
 - Todo:
-  [ ] Implement kmonad
-  [ ] Write a 'tty mode' for battery-saving
-  [-] Refactor /etc/nixos
-  [-] Make my system fully keyboard-navigable
-  [ ] Write org/markup cheatsheets for my apps
-  [ ] Get a greeter that doesn't suck
+  + [ ] Implement kmonad
+  + [ ] Write a 'tty mode' for battery-saving
+  + [-] Refactor /etc/nixos
+  + [-] Make my system fully keyboard-navigable
+  + [ ] Write org/markup cheatsheets for my apps
+  + [ ] Get a greeter that doesn't suck
 - Done:
-  [X] Remove Hyprland and Caelestia
+  + [X] Remove Hyprland and Caelestia
 
 * What's new:
 - rethemed all apps to Gruvbox (I tried and failed to get Matugen to work :c)
