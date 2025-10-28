@@ -53,18 +53,22 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    vicinae = {
+      url = "github:vicinaehq/vicinae";
+    };
+
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, stylix, zen-browser, nvf, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, stylix, zen-browser, nvf, vicinae, ... }: {
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
     
     homeConfigurations.maggie = home-manager.lib.homeManagerConfiguration {
       modules = [
         inputs.nix-doom-emacs-unstraightened.homeModule
-        ./home.nix
+        vicinae.homeManagerModules.default
       ];
       extraSpecialArgs = { inherit inputs; };
     };
@@ -74,16 +78,20 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./configuration.nix
+
+          ./modules/system/hardware-configuration.nix
+          ./modules/system
+
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           inputs.musnix.nixosModules.musnix
+
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.maggie = {
               imports = [
-                ./home.nix
+                ./modules/home
                 inputs.nix-doom-emacs-unstraightened.homeModule
               ];
             };

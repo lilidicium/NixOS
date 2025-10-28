@@ -14,6 +14,9 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.noctalia-shell.enable = true;
+  services.preload.enable = true;
+  services.system76-scheduler.enable = true;
+
 
   time.timeZone = "America/New_York";
 
@@ -31,5 +34,7 @@
       LC_TIME = "en_US.UTF-8";
     };
   };
+
+  system.stateVersion = "25.05"; # no need to change this :3
 
 }

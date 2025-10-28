@@ -118,7 +118,7 @@
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "matugenSchemeType": "scheme-fruit-salad",
-        "predefinedScheme": "Tokyo Night",
+        "predefinedScheme": "Gruvbox",
         "schedulingMode": "off",
         "useWallpaperColors": false
     },
@@ -278,7 +278,7 @@
         "kitty": false,
         "pywalfox": true,
         "qt": true,
-        "vicinae": false
+        "vicinae": true
     },
     "ui": {
         "fontDefault": "Roboto",
@@ -299,7 +299,7 @@
             {
                 "directory": "/home/maggie/media/images/wallpapers",
                 "name": "eDP-1",
-                "wallpaper": "/home/maggie/media/images/wallpapers/balcony-catppuccin.png"
+                "wallpaper": "/home/maggie/media/images/wallpapers/gruvbox-circuits.png"
             }
         ],
         "randomEnabled": false,

@@ -1,0 +1,55 @@
+#+title: Readme
+#+author: mag$ / lilidicium
+
+[[[[https://img.shields.io/badge/NixOS-24.05-blue.svg?style=flat-square&logo=NixOS&logoColor=white]]][https://nixos.org]]
+
+* Welcome to my repo!
+I decided to publish my NixOS journey by making this repo public.
+I use this repo for version control, backups, and sharing with others!
+
+#+begin_quote
+*DISCLAIMER:* /I do not intend anyone but myself to use this configuration. I would be honored if you copied or took inspiration from my config (please let me know if you do!) but it's generally not advised to clone this repo and use this config as your config./
+#+end_quote
+
+* What I'm up to:
+- Todo:
+  [ ] Implement kmonad
+  [ ] Write a 'tty mode' for battery-saving
+  [-] Refactor /etc/nixos
+  [-] Make my system fully keyboard-navigable
+  [ ] Write org/markup cheatsheets for my apps
+  [ ] Get a greeter that doesn't suck
+- Done:
+  [X] Remove Hyprland and Caelestia
+
+* What's new:
+- rethemed all apps to Gruvbox (I tried and failed to get Matugen to work :c)
+- Switched nearly every component of my desktop environment:
+  + *Hyprland to Niri*
+    + /Niri solved problems I didn't know I had with Hyprland, and tiling WMs in general. Blazingly fast in the truest sense!/
+  + *Alacritty to Ghostty*
+    + /Ghostty is faster, and it supports ligatures./
+  + *Sysmenu to Vicinae*
+    + /Sysmenu always seemed like a stopgap to me. I dislike Rofi, so I used Sysmenu as a replacement until I found something that was 'Rofi but good'. Vicinae is Rofi but good./
+  + *Neovim to Doom Emacs*
+    + /My buddy Fox put me onto Emacs, and I learned about Doom from the badge on Hlissner's github. Something clicked. How far I've come from Micro and VSCode.../
+  + *Zen to Firefox* /(temporary)/
+    + /Zen is by far the best browser to use with a mouse, but Firefox seemed like a better choice to use Tridactyl with./
+  + *Fish to Bash* /(temporary)/
+    + /Fish has a weird issue where it eats literally 12GB of RAM constantly. I can't find anything about it online, and I don't feel like troubleshooting./
+
+|            | *Current*  | *Previous Gen* | *First Gen*    |
+| *Bar/Menu* | Noctalia   | +Caelestia+    | +NWG-shell+    |
+| *WM*       | Niri       | +Hyprland+     | +Hyprland+     |
+| *Editor*   | Doom Emacs | Neovim         | +Micro+        |
+| *Terminal* | Ghostty    | +Alacritty+    | +Alacritty+    |
+| *Launcher* | Vicinae    | +Sysmenu+      | +NWG-launcher+ |
+| *Browser*  | Firefox    | +Zen+          | Firefox        |
+| *Scheme*   | Gruvbox    | +Catppuccin+   | +Catpuccin+    |
+
+* Why NixOS?
+For as long as I've used computers, I've wiped my drives every few months to cleanse the crap that accumulates on them. No matter what operating system I used, my drive would fill up with old programs, halfhearted attempts at installing new programs, and other stuff I don't care to remember. I thought this was how it had to be, until I tried NixOS. NixOS makes program management squeaky clean: I can add and remove programs with a single word in a text file, and uninstalling programs leaves little to no residue. Having my entire system declared in a repo of config files is double awesome, I can reproduce my system by cloning a single repo, /and/ I can version control my entire system and roll it back if I don't like a set of changes I made. As I once heard, it takes twice as long to solve a problem on NixOS, but once you do, you never have to solve it again.
+
+* Should /you/ use NixOS?
+If the things I mentioned in the above paragraph get you excited (reproducibility, version control, etc.) you should give NixOS a go! Also, if you like functional programming, Nix is a complete functional and declarative programming language that you should try! If you use Linux as a hobby, definiely give NixOS a shot. It's wayyyyy easier to write a NixOS config than it would be to write something like a dotfile install script, and once you make your rice, you can keep it forever, on as many machines as you want! I would recommend putting NixOS on a virtual machine or an old laptop, and messing around with it for a few weeks until you get the hang of it. Feel free to add me on Discord if you have questions (`@lilidicium`)!
+

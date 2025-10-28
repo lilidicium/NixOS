@@ -1,5 +1,9 @@
 { config, pkgs, inputs, ... }: {
 
+  imports = [
+    inputs.vicinae.homeManagerModules.default
+  ];
+
   # This file is for installing packages and enabling programs.
 
   # If you have a program that's enabled via home-manager
@@ -80,7 +84,13 @@
     doom-emacs = {
       enable = true;
       doomDir = ./apps/emacs/doom;
+      emacs = pkgs.emacs-pgtk;
     };
+  };
+
+  services.vicinae = {
+    enable = true;
+    autoStart = true;
   };
 
 }
