@@ -16,10 +16,6 @@
 
     niri.enable = true;
 
-    hyprland = {
-      enable = true;
-    };
-
     steam = {
       enable = true;
     };

@@ -84,7 +84,7 @@
     doom-emacs = {
       enable = true;
       doomDir = ./apps/emacs/doom;
-      emacs = pkgs.emacs-pgtk;
+      #emacs = pkgs.emacs-pgtk;
     };
   };
 
