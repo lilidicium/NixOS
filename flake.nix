@@ -32,15 +32,15 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    quickshell = {
-      url = "github:outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #quickshell = {
+    #  url = "github:outfoxxed/quickshell";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";  # Use same quickshell version
+      #inputs.quickshell.follows = "quickshell";  # Use same quickshell version
     };
 
     nvf = {
@@ -57,6 +57,10 @@
       url = "github:vicinaehq/vicinae";
     };
 
+    nixpkgs-netbeans = {
+      url = "github:NixOS/nixpkgs/b493094c6184e68cfceadc3342b8387295ccf9ff";
+    };
+
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
   };
@@ -64,7 +68,7 @@
   outputs = inputs@{ nixpkgs, home-manager, stylix, zen-browser, nvf, vicinae, ... }: {
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-    
+
     homeConfigurations.maggie = home-manager.lib.homeManagerConfiguration {
       modules = [
         inputs.nix-doom-emacs-unstraightened.homeModule

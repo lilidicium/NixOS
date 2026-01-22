@@ -65,6 +65,9 @@
     inputs.caelestia-shell.packages."${pkgs.system}".default
     inputs.caelestia-cli.packages."${pkgs.system}".default
 
+    # school
+    inputs.nixpkgs-netbeans.legacyPackages."${pkgs.system}".netbeans
+
     # manix
       renpy
       kmonad
@@ -93,7 +96,6 @@
 
   services.vicinae = {
     enable = true;
-    autoStart = true;
   };
 
 }
