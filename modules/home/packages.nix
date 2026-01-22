@@ -16,6 +16,7 @@
     man
     tree
     tldr
+    fd
 
     # terminal apps
     btop
@@ -35,6 +36,8 @@
     obsidian
     godot
     ghostty
+    appflowy
+    notion-app-enhanced
 
     # launchers
     sysmenu

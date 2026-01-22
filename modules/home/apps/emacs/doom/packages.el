@@ -41,6 +41,8 @@
 ;; our package manager can't deal with; see radian-software/straight.el#279)
 ;; (package! builtin-package :recipe (:branch "develop"))
 
+(package! catppuccin-theme)
+
 ;; Use `:pin' to specify a particular commit to install.
 ;; (package! builtin-package :pin "1a2b3c4d5e")
 

@@ -1,6 +1,8 @@
 {
     "appLauncher": {
         "backgroundOpacity": 1,
+        "customLaunchPrefix": "",
+        "customLaunchPrefixEnabled": false,
         "enableClipboardHistory": false,
         "pinnedExecs": [
         ],
@@ -14,18 +16,21 @@
         "mprisBlacklist": [
         ],
         "preferredPlayer": "",
+        "visualizerQuality": "high",
         "visualizerType": "linear",
-        "volumeOverdrive": true,
+        "volumeOverdrive": false,
         "volumeStep": 5
     },
     "bar": {
         "backgroundOpacity": 1,
-        "density": "comfortable",
+        "density": "default",
+        "exclusive": true,
         "floating": false,
         "marginHorizontal": 0.25,
         "marginVertical": 0.25,
         "monitors": [
         ],
+        "outerCorners": true,
         "position": "right",
         "showCapsule": false,
         "widgets": {
@@ -45,7 +50,8 @@
                     "showDiskUsage": false,
                     "showMemoryAsPercent": false,
                     "showMemoryUsage": true,
-                    "showNetworkStats": false
+                    "showNetworkStats": false,
+                    "usePrimaryColor": false
                 },
                 {
                     "colorizeIcons": false,
@@ -58,6 +64,7 @@
                 },
                 {
                     "hideMode": "hidden",
+                    "hideWhenIdle": false,
                     "id": "MediaMini",
                     "maxWidth": 145,
                     "scrollingMode": "hover",
@@ -69,37 +76,47 @@
             ],
             "right": [
                 {
+                    "id": "ScreenRecorder"
+                },
+                {
                     "blacklist": [
-                        "nm-applet"
                     ],
-                    "colorizeIcons": true,
+                    "colorizeIcons": false,
+                    "drawerEnabled": true,
+                    "favorites": [
+                    ],
                     "id": "Tray"
                 },
                 {
                     "hideWhenZero": true,
                     "id": "NotificationHistory",
-                    "showUnreadBadge": false
+                    "showUnreadBadge": true
                 },
                 {
                     "displayMode": "onhover",
-                    "id": "Bluetooth"
-                },
-                {
-                    "displayMode": "alwaysShow",
                     "id": "Battery",
                     "warningThreshold": 30
                 },
                 {
-                    "customFont": "FantasqueSansM Nerd Font",
-                    "formatHorizontal": "",
-                    "formatVertical": "HH mm",
+                    "displayMode": "onhover",
+                    "id": "Volume"
+                },
+                {
+                    "displayMode": "onhover",
+                    "id": "Brightness"
+                },
+                {
+                    "customFont": "",
+                    "formatHorizontal": "HH:mm ddd, MMM dd",
+                    "formatVertical": "HH mm - dd MM",
                     "id": "Clock",
-                    "useCustomFont": true,
+                    "useCustomFont": false,
                     "usePrimaryColor": true
                 },
                 {
+                    "colorizeDistroLogo": false,
                     "customIconPath": "",
-                    "icon": "alpha",
+                    "icon": "noctalia",
                     "id": "ControlCenter",
                     "useDistroLogo": false
                 }
@@ -110,7 +127,9 @@
         "chargingMode": 0
     },
     "brightness": {
-        "brightnessStep": 5
+        "brightnessStep": 5,
+        "enableDdcSupport": false,
+        "enforceMinimum": true
     },
     "colorSchemes": {
         "darkMode": true,
@@ -118,7 +137,7 @@
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "matugenSchemeType": "scheme-fruit-salad",
-        "predefinedScheme": "Gruvbox",
+        "predefinedScheme": "Catppuccin",
         "schedulingMode": "off",
         "useWallpaperColors": false
     },
@@ -181,9 +200,9 @@
         "backgroundOpacity": 1,
         "colorizeIcons": false,
         "displayMode": "auto_hide",
-        "floatingRatio": 1,
+        "enabled": false,
+        "floatingRatio": 0.29,
         "monitors": [
-            "eDP-1"
         ],
         "onlySameOutput": true,
         "pinnedApps": [
@@ -192,16 +211,20 @@
     },
     "general": {
         "animationDisabled": false,
-        "animationSpeed": 1.5000000000000002,
+        "animationSpeed": 1,
         "avatarImage": "/home/maggie/.face",
         "compactLockScreen": false,
         "dimDesktop": true,
+        "enableShadows": true,
         "forceBlackScreenCorners": false,
         "language": "",
         "lockOnSuspend": true,
-        "radiusRatio": 1,
-        "scaleRatio": 1.1500000000000001,
-        "screenRadiusRatio": 1,
+        "radiusRatio": 0,
+        "scaleRatio": 1,
+        "screenRadiusRatio": 0,
+        "shadowDirection": "bottom_right",
+        "shadowOffsetX": 2,
+        "shadowOffsetY": 3,
         "showScreenCorners": false
     },
     "hooks": {
@@ -210,11 +233,14 @@
         "wallpaperChange": ""
     },
     "location": {
-        "name": "Lowville, NY",
+        "analogClockInCalendar": false,
+        "firstDayOfWeek": -1,
+        "name": "Tokyo",
         "showCalendarEvents": true,
+        "showCalendarWeather": true,
         "showWeekNumberInCalendar": false,
-        "use12hourFormat": true,
-        "useFahrenheit": true,
+        "use12hourFormat": false,
+        "useFahrenheit": false,
         "weatherEnabled": true
     },
     "network": {
@@ -230,18 +256,20 @@
         "nightTemp": "4000"
     },
     "notifications": {
-        "criticalUrgencyDuration": 12,
+        "backgroundOpacity": 1,
+        "criticalUrgencyDuration": 15,
         "doNotDisturb": false,
+        "enabled": true,
         "location": "top_right",
-        "lowUrgencyDuration": 2,
+        "lowUrgencyDuration": 3,
         "monitors": [
         ],
-        "normalUrgencyDuration": 4,
+        "normalUrgencyDuration": 8,
         "overlayLayer": true,
         "respectExpireTimeout": false
     },
     "osd": {
-        "autoHideMs": 1000,
+        "autoHideMs": 2000,
         "enabled": true,
         "location": "top_right",
         "monitors": [
@@ -252,44 +280,50 @@
         "audioCodec": "opus",
         "audioSource": "default_output",
         "colorRange": "limited",
-        "directory": "/home/maggie/media/videos/screencaps",
+        "directory": "/home/maggie/Videos",
         "frameRate": 60,
-        "quality": "medium",
+        "quality": "very_high",
         "showCursor": true,
         "videoCodec": "h264",
         "videoSource": "portal"
     },
-    "settingsVersion": 16,
+    "settingsVersion": 21,
     "setupCompleted": true,
     "templates": {
+        "alacritty": false,
+        "code": false,
         "discord": false,
         "discord_armcord": false,
         "discord_dorion": false,
-        "discord_equibop": true,
+        "discord_equibop": false,
         "discord_lightcord": false,
-        "discord_vesktop": true,
+        "discord_vesktop": false,
         "discord_webcord": false,
         "enableUserTemplates": false,
         "foot": false,
         "fuzzel": false,
         "ghostty": true,
         "gtk": true,
-        "kcolorscheme": true,
+        "kcolorscheme": false,
         "kitty": false,
         "pywalfox": true,
-        "qt": true,
-        "vicinae": true
+        "qt": false,
+        "spicetify": false,
+        "vicinae": true,
+        "walker": false,
+        "wezterm": false
     },
     "ui": {
         "fontDefault": "Roboto",
         "fontDefaultScale": 1,
         "fontFixed": "DejaVu Sans Mono",
         "fontFixedScale": 1,
-        "panelsOverlayLayer": true,
+        "panelsAttachedToBar": true,
+        "settingsPanelAttachToBar": false,
         "tooltipsEnabled": true
     },
     "wallpaper": {
-        "defaultWallpaper": "",
+        "defaultWallpaper": "/nix/store/hydwg4zh16qmwnndxjq41mxrh48xak51-noctalia-shell-3aa2c0d693b7c3748250e5e534acd7d59a4308b8/share/noctalia-shell/Assets/Wallpaper/noctalia.png",
         "directory": "/home/maggie/media/images/wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
@@ -299,14 +333,17 @@
             {
                 "directory": "/home/maggie/media/images/wallpapers",
                 "name": "eDP-1",
-                "wallpaper": "/home/maggie/media/images/wallpapers/circuitboard-gruvbox.png"
+                "wallpaper": "/home/maggie/media/images/wallpapers/afx-catppuccin.png"
             }
         ],
+        "overviewEnabled": false,
+        "panelPosition": "follow_bar",
         "randomEnabled": false,
         "randomIntervalSec": 300,
+        "recursiveSearch": false,
         "setWallpaperOnAllMonitors": true,
         "transitionDuration": 1500,
         "transitionEdgeSmoothness": 0.05,
-        "transitionType": "disc"
+        "transitionType": "random"
     }
 }

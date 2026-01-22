@@ -6,9 +6,10 @@
 * Welcome to my repo!
 I decided to publish my NixOS journey by making this repo public.
 I use this repo for version control, backups, and sharing with others!
+The new college semester has started, so I'm using my laptop again! I'll be updating this repo until this summer.
 
 #+begin_quote
-*DISCLAIMER:* /I do not intend anyone but myself to use this configuration. I would be honored if you copied or took inspiration from my config (please let me know if you do!) but it's generally not advised to clone this repo and use this config as your config./
+*DISCLAIMER:* /I do not intend anyone but myself to use this configuration. It'd be cool if you copied or took inspiration from my config (please let me know if you do!) but it's generally not advised to clone this repo and use this config as your config./
 #+end_quote
 
 * What I'm up to:
@@ -31,21 +32,23 @@ I use this repo for version control, backups, and sharing with others!
     + /Ghostty is faster, and it supports ligatures./
   + *Sysmenu to Vicinae*
     + /Sysmenu always seemed like a stopgap to me. I dislike Rofi, so I used Sysmenu as a replacement until I found something that was 'Rofi but good'. Vicinae is Rofi but good./
-  + *Neovim to Doom Emacs*
-    + /My buddy Fox put me onto Emacs, and I learned about Doom from the badge on Hlissner's github. Something clicked. How far I've come from Micro and VSCode.../
+  + *Neovim to Doom Emacs* /(temporary)/
+    + +/My buddy Fox put me onto Emacs, and I learned about Doom from the badge on Hlissner's github. Something clicked. How far I've come from Micro and VSCode.../+
+    + /I don't use enough features of Doom to justify running a whole Emacs server rather than a minimal nvim config. Will switch back to Neovim soon, probably./
   + *Zen to Firefox* /(temporary)/
     + /Zen is by far the best browser to use with a mouse, but Firefox seemed like a better choice to use Tridactyl with./
+    + /I plan to switch to Glide as soon as I figure out how to flakify it./
   + *Fish to Bash* /(temporary)/
     + /Fish has a weird issue where it eats literally 12GB of RAM constantly. I can't find anything about it online, and I don't feel like troubleshooting./
 
-|            | *Current*  | *Previous Gen* | *First Gen*    |
-| *Bar/Menu* | Noctalia   | +Caelestia+    | +NWG-shell+    |
-| *WM*       | Niri       | +Hyprland+     | +Hyprland+     |
-| *Editor*   | Doom Emacs | Neovim         | +Micro+        |
-| *Terminal* | Ghostty    | +Alacritty+    | +Alacritty+    |
-| *Launcher* | Vicinae    | +Sysmenu+      | +NWG-launcher+ |
-| *Browser*  | Firefox    | +Zen+          | Firefox        |
-| *Scheme*   | Gruvbox    | +Catppuccin+   | +Catpuccin+    |
+|            | *Current*    | *Previous Gen* | *First Gen*    |
+| *Bar/Menu*   | Noctalia   | +Caelestia+    | +NWG-shell+    |
+| *WM*         | Niri       | +Hyprland+     | +Hyprland+     |
+| *Editor*     | Doom Emacs | Neovim       | +Micro+        |
+| *Terminal*   | Ghostty    | +Alacritty+    | +Alacritty+    |
+| *Launcher*   | Vicinae    | +Sysmenu+      | +NWG-launcher+ |
+| *Browser*    | Firefox    | +Zen+          | Firefox      |
+| *Scheme*     | Gruvbox    | +Catppuccin+   | +Catpuccin+    |
 
 * Why NixOS?
 For as long as I've used computers, I've wiped my drives every few months to cleanse the crap that accumulates on them. No matter what operating system I used, my drive would fill up with old programs, halfhearted attempts at installing new programs, and other stuff I don't care to remember. I thought this was how it had to be, until I tried NixOS. NixOS makes program management squeaky clean: I can add and remove programs with a single word in a text file, and uninstalling programs leaves little to no residue. Having my entire system declared in a repo of config files is double awesome, I can reproduce my system by cloning a single repo, /and/ I can version control my entire system and roll it back if I don't like a set of changes I made. As I once heard, it takes twice as long to solve a problem on NixOS, but once you do, you never have to solve it again.
